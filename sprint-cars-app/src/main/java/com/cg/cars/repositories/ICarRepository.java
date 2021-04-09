@@ -1,17 +1,23 @@
 package com.cg.cars.repositories;
 
+import java.time.LocalDate;
 import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.cg.cars.models.Car;
 
-public interface ICarRepository {
-	public Car addCar(Car car);
-	public Car removeCar(long id);
-	public Car updateCar(long id, Car car);
-	public Car getCar(long id);
-	public List<Car> getAllCars();
-	public List<Car> getCarsByLocation();
-	public List<Car> getCarsByModel();
-	public List<Car> getCarsByBrand();
+public interface ICarRepository extends JpaRepository<Car, Long> {
+public List<Car> findByRegistrationState(String registrationState);
+	
+	public List<Car> findByModel(String model);
+	
+	public List<Car> findByBrand(String brand);
+	
+	public List<Car> findByPrice(long price);
+	
+	public List<Car> findByRegistrationYear(LocalDate registrationYear);
+	
+	public Car updateById(long id);
 
 }

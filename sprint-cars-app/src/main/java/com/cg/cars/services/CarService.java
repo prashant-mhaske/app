@@ -8,7 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.cg.cars.models.Car;
-import com.cg.cars.repositories.CarRepository;
+
+import com.cg.cars.repositories.ICarRepository;
 
 
 @Service
@@ -17,7 +18,7 @@ public class CarService {
 
 
 	@Autowired
-	CarRepository carRepository;
+	ICarRepository carRepository;
 	
 	public void addCar(Car car)
 	{
