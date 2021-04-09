@@ -1,8 +1,8 @@
-package com.cg.cars.service;
+package com.cg.cars.services;
 
 import java.util.List;
 
-import com.cg.cars.model.Appointment;
+import com.cg.cars.models.Appointment;
 
 public interface IAppointmentService {
 

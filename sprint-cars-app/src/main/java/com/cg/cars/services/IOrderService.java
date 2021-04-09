@@ -1,8 +1,8 @@
-package com.cg.cars.service;
+package com.cg.cars.services;
 
 import java.util.List;
 
-import com.cg.cars.model.Order;
+import com.cg.cars.models.Order;
 
 public interface IOrderService {
 	public Order addOrder(Order order);

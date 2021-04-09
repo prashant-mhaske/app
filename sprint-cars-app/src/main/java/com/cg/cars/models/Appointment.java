@@ -1,4 +1,4 @@
-package com.cg.cars.model;
+package com.cg.cars.models;
 
 import java.time.LocalDate;
 import java.time.LocalTime;

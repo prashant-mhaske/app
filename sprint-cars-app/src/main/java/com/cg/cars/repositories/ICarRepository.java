@@ -1,8 +1,8 @@
-package com.cg.cars.repository;
+package com.cg.cars.repositories;
 
 import java.util.List;
 
-import com.cg.cars.model.Car;
+import com.cg.cars.models.Car;
 
 public interface ICarRepository {
 	public Car addCar(Car car);

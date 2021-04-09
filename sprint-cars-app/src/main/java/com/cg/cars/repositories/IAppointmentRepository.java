@@ -1,8 +1,8 @@
-package com.cg.cars.repository;
+package com.cg.cars.repositories;
 
 import java.util.List;
 
-import com.cg.cars.model.Appointment;
+import com.cg.cars.models.Appointment;
 
 public interface IAppointmentRepository {
 

@@ -1,6 +1,6 @@
-package com.cg.cars.service;
+package com.cg.cars.services;
 
-import com.cg.cars.model.User;
+import com.cg.cars.models.User;
 
 public interface IUserService {
 	public User signIn(User user);

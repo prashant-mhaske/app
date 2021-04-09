@@ -1,6 +1,6 @@
-package com.cg.cars.repository;
+package com.cg.cars.repositories;
 
-import com.cg.cars.model.User;
+import com.cg.cars.models.User;
 
 public interface IUserRepository {
 	public User signIn(User user);

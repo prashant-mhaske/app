@@ -1,4 +1,4 @@
-package com.cg.cars.model;
+package com.cg.cars.models;
 
 public class User {
 	private String userId;

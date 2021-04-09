@@ -1,8 +1,8 @@
-package com.cg.cars.service;
+package com.cg.cars.services;
 
 import java.util.List;
 
-import com.cg.cars.model.Customer;
+import com.cg.cars.models.Customer;
 
 public interface ICustomerService {
 

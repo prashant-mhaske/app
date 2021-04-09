@@ -1,8 +1,8 @@
-package com.cg.cars.service;
+package com.cg.cars.services;
 
 import java.util.List;
 
-import com.cg.cars.model.Payment;
+import com.cg.cars.models.Payment;
 
 public interface IPaymentService {
 	public Payment addPayment(Payment payment);

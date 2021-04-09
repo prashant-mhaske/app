@@ -1,8 +1,8 @@
-package com.cg.cars.repository;
+package com.cg.cars.repositories;
 
 import java.util.List;
 
-import com.cg.cars.model.Order;
+import com.cg.cars.models.Order;
 
 public interface IOrderRepository {
 	public Order addOrder(Order order);
