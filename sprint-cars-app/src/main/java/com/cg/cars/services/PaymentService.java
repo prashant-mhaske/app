@@ -17,13 +17,12 @@ public class PaymentService implements IPaymentService{
 
 	@Override
 	public Payment addPayment(Payment payment) {
-		// TODO Auto-generated method stub
-		return null;
+		paymentRepository.save(payment);
+		return payment; 
 	}
 
 	@Override
 	public Payment removePayment(long id) {
-		// TODO Auto-generated method stub
 		Payment payment=paymentRepository.findById(id).get();
 		paymentRepository.deleteById(id);
 		return payment;
