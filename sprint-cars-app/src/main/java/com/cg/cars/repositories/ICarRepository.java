@@ -18,6 +18,6 @@ public List<Car> findByRegistrationState(String registrationState);
 	
 	public List<Car> findByRegistrationYear(LocalDate registrationYear);
 	
-	public Car updateById(long id);
+//	public Car updateById(long id);
 
 }

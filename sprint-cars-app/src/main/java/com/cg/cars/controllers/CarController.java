@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cg.cars.models.Car;
-import com.cg.cars.services.CarService;
+import com.cg.cars.services.ICarServiceImpl;
 
 
 @RestController
@@ -22,7 +22,7 @@ import com.cg.cars.services.CarService;
 public class CarController {
 
 	@Autowired
-	CarService carService;
+	ICarServiceImpl carService;
 	
 	@PostMapping("/add")
 	private Car saveCar(@RequestBody Car car)
