@@ -11,13 +11,12 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="Customer_details")
-public class Customer {
+@Table
+public class Customer extends User {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column
-	private String userId;
+	private Long userId;
 	
 	@Column
 	private String name;
@@ -42,7 +41,7 @@ public class Customer {
 	}
 
 
-	public Customer(String userId, String name, String email, String contactNo, LocalDate dob, Address address) {
+	public Customer(long userId, String name, String email, String contactNo, LocalDate dob, Address address) {
 		super();
 		this.userId = userId;
 		this.name = name;
@@ -53,12 +52,12 @@ public class Customer {
 	}
 
 
-	public String getUserId() {
+	public long getUserId() {
 		return userId;
 	}
 
 
-	public void setUserId(String userId) {
+	public void setUserId(long userId) {
 		this.userId = userId;
 	}
 
