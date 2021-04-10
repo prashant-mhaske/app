@@ -4,13 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.cg.cars.models.Customer;
 import com.cg.cars.models.Payment;
 import com.cg.cars.repositories.IAddressRepository;
 import com.cg.cars.repositories.ICustomerRepository;
 
-public class CustomerServiceImpl implements ICustomerService 
+@Service
+public class CustomerService implements ICustomerService 
 {
 	@Autowired
 	ICustomerRepository customerRepository;
@@ -21,7 +23,8 @@ public class CustomerServiceImpl implements ICustomerService
 	@Override
 	public Customer addCustomer(Customer customer) {
 		
-		return null;
+		customerRepository.save(customer);
+		return customer;
 	}
 
 	@Override
