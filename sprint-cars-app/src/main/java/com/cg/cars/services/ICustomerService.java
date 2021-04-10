@@ -11,5 +11,6 @@ public interface ICustomerService {
 	public Customer updateCustomer(long custId, Customer customer);
 	public Customer getCustomer(long custId);
 	public List<Customer> getAllCustomers(); 
-	public List<Customer> getCustomersByLocation();
+	public List<Customer> getCustomersByCity(String city);
+	public List<Customer> getCustomersByState(String state);
 }
