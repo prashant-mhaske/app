@@ -11,11 +11,10 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="order")
+@Table(name = "orders")
 public class Order {
 	
 	@Id
-	@Column
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	

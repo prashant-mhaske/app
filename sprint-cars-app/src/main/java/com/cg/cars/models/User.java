@@ -2,14 +2,16 @@ package com.cg.cars.models;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="user_details")
+@Table(name = "users")
 public class User {
 
-	@Column
-	private int userId;
+	@Id
+	private long userId;
 	
 	@Column
 	private String password;
@@ -17,26 +19,27 @@ public class User {
 	@Column
 	private String role;
 	
-	private Customer customerUser;
+//	@OneToOne
+//	private Customer customerUser;
 
 	public User() {
 		super();
 		
 	}
 
-	public User(int userId, String password, String role, Customer customerUser) {
+	public User(long userId, String password, String role) {
 		super();
 		this.userId = userId;
 		this.password = password;
 		this.role = role;
-		this.customerUser = customerUser;
+		//this.customerUser = customerUser;
 	}
 
-	public int getUserId() {
+	public long getUserId() {
 		return userId;
 	}
 
-	public void setUserId(int userId) {
+	public void setUserId(Long userId) {
 		this.userId = userId;
 	}
 
@@ -56,18 +59,19 @@ public class User {
 		this.role = role;
 	}
 
-	public Customer getCustomerUser() {
-		return customerUser;
-	}
-
-	public void setCustomerUser(Customer customerUser) {
-		this.customerUser = customerUser;
-	}
-
 	@Override
 	public String toString() {
-		return "User [userId=" + userId + ", password=" + password + ", role=" + role + ", customerUser=" + customerUser
-				+ "]";
+		return "User [userId=" + userId + ", password=" + password + ", role=" + role + "]";
 	}
+
+//	public Customer getCustomerUser() {
+//		return customerUser;
+//	}
+//
+//	public void setCustomerUser(Customer customerUser) {
+//		this.customerUser = customerUser;
+//	}
+
+	
 
 }
