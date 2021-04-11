@@ -17,9 +17,9 @@ public class AppointmentService implements IAppointmentService {
 	IAppointmentRepository appointmentRepository;
 
 	@Override
-	public Appointment addAppointment(Appointment appointment) {
+	public void addAppointment(Appointment appointment) {
 		
-		return null;
+		appointmentRepository.save(appointment);
 	}
 
 	@Override
