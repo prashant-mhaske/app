@@ -43,6 +43,7 @@ public class Customer extends User {
 
 	public Customer(long userId, String name, String email, String contactNo, LocalDate dob, Address address) {
 		super();
+		super.setRole("customer");
 		this.userId = userId;
 		this.name = name;
 		this.email = email;
