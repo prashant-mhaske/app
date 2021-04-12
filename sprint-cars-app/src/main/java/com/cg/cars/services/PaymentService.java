@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import com.cg.cars.models.Payment;
 import com.cg.cars.repositories.IPaymentRepository;
@@ -16,7 +17,7 @@ public class PaymentService implements IPaymentService{
 	IPaymentRepository paymentRepository;
 
 	@Override
-	public Payment addPayment(Payment payment) {
+	public Payment addPayment(@RequestBody Payment payment) {
 		paymentRepository.save(payment);
 		return payment; 
 	}
@@ -29,7 +30,7 @@ public class PaymentService implements IPaymentService{
 	}
 
 	@Override
-	public Payment updatePayment(long id, Payment payment) {
+	public Payment updatePayment(long id, @RequestBody Payment payment) {
 		paymentRepository.save(payment);
 		return payment;
 	}
