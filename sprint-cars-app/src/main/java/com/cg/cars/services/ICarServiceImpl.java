@@ -1,5 +1,6 @@
 package com.cg.cars.services;
 
+
 //import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +15,8 @@ import com.cg.cars.repositories.ICarRepository;
 
 @Service
 public class ICarServiceImpl implements ICarService {
-
+	
+	List<Car> car;
 	@Autowired
 	ICarRepository carRepository;
 
@@ -39,36 +41,35 @@ public class ICarServiceImpl implements ICarService {
 
 	@Override
 	public List<Car> getCarsByLocation(String registrationState) {
-
-		return carRepository.findByRegistrationState(registrationState);
-
+		car=carRepository.findByRegistrationState(registrationState);
+		return checkForCar(car);
 	}
 	
 	@Override
 	public List<Car> getCarsByYear(String year) {
-
-		return carRepository.findByYear(year);
+		car = carRepository.findByYear(year);
+		return checkForCar(car); 
 	}
-	
 
-
-	
 	@Override
 	public List<Car> getCarsByModel(String model) {
-
-		return carRepository.findByModel(model);
+		car = carRepository.findByModel(model);
+		return checkForCar(car);
+		
 	}
 	
 	@Override
 	public List<Car> getCarsByBrand(String brand) {
 
-		return carRepository.findByBrand(brand);
+		car = carRepository.findByBrand(brand);
+		return checkForCar(car);
 	}
 	
 	@Override
 	public List<Car> getCarsByPrice(long price) {
 
-		return carRepository.findByPrice(price);
+		car = carRepository.findByPrice(price);
+		return checkForCar(car);
 	}
 	
 	@Override
@@ -83,6 +84,14 @@ public class ICarServiceImpl implements ICarService {
 	public void delete(long id) {
 
 		carRepository.deleteById(id);
+	}
+	
+	
+	public static List<Car> checkForCar(List<Car> car) {
+		
+		if(car==null)
+			throw new CarNotFoundException("Not found");
+		return car;
 	}
 
 }
