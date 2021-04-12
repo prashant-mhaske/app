@@ -15,6 +15,5 @@ public interface ICustomerRepository extends CrudRepository<Customer, Long> {
 //	public List<Customer> getAllCustomers(); 
 //	public List<Customer> getCustomersByLocation();
 	
-	public List<Customer> findByCity(String city);
-	public List<Customer> findByState(String state);
+	
 }

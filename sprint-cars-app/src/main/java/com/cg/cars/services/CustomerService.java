@@ -4,15 +4,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.cg.cars.models.Customer;
 import com.cg.cars.models.Payment;
+import com.cg.cars.repositories.IAddressRepository;
 import com.cg.cars.repositories.ICustomerRepository;
 
-public class CustomerServiceImpl implements ICustomerService 
+@Service
+public class CustomerService implements ICustomerService 
 {
 	@Autowired
 	ICustomerRepository customerRepository;
+	
+	@Autowired
+	IAddressRepository addressRepository;
 
 	@Override
 	public Customer addCustomer(Customer customer) {
@@ -54,14 +60,14 @@ public class CustomerServiceImpl implements ICustomerService
 	@Override
 	public List<Customer> getCustomersByCity(String city) {
 		
-		return customerRepository.findByCity(city);
+		return addressRepository.findByCity(city);
 		
 	}
 	
 	@Override
 	public List<Customer> getCustomersByState(String state) {
 		
-		return customerRepository.findByState(state);
+		return addressRepository.findByState(state);
 		
 	}
 
