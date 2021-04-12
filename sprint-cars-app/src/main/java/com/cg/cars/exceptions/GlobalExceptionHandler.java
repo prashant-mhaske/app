@@ -42,5 +42,10 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 	public ResponseEntity<Object> handleOrdertNotFound(OrderNotFoundException ex){
 		return new ResponseEntity<Object>(ex.getMessage(), HttpStatus.NOT_FOUND);
 	}
+	
+	@ExceptionHandler(AppointmentNotFoundException.class)
+	public ResponseEntity<Object> handleAppointmentNotFound(AppointmentNotFoundException ex){
+		return new ResponseEntity<Object>(ex.getMessage(),HttpStatus.NOT_FOUND);
+	}
 
 }

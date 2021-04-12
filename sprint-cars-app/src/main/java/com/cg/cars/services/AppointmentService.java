@@ -5,7 +5,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 import com.cg.cars.models.Appointment;
 import com.cg.cars.repositories.IAppointmentRepository;
@@ -17,28 +19,30 @@ public class AppointmentService implements IAppointmentService {
 	IAppointmentRepository appointmentRepository;
 
 	@Override
-	public void addAppointment(Appointment appointment) {
+	public Appointment addAppointment(Appointment appointment) {
 		
-		appointmentRepository.save(appointment);
+		return appointmentRepository.save(appointment);
 	}
 
 	@Override
 	public Appointment removeAppointment(long id) {
-		Appointment appointment=appointmentRepository.findById(id).get();
+		Appointment appointment= getAppointment(id);
 		appointmentRepository.deleteById(id);
 		return appointment;
 	}
 
 	@Override
 	public Appointment updateAppointment(long id, Appointment appointment) {
-		appointmentRepository.save(appointment);
-		return appointment;
+		return appointmentRepository.save(appointment);
+		 
 		
 	}
 
 	@Override
 	public Appointment getAppointment(long id) {
-		return appointmentRepository.findById(id).get();
+		return appointmentRepository.findById(id)
+				.orElseThrow(()-> new com.cg.cars.exceptions.AppointmentNotFoundException("Appointment Details Not Avialable"));
+				
 		
 	}
 
