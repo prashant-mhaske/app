@@ -1,6 +1,10 @@
 package com.cg.cars.models;
 
+
 import java.time.LocalDate;
+
+
+//import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,10 +15,10 @@ import javax.persistence.Table;
 
 @Entity
 @Table
-public class Car {
+public class Car{
 	
+
 	@Id
-	@Column
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	
@@ -32,7 +36,7 @@ public class Car {
 	
 	@Column
 	private LocalDate registrationYear;
-	
+
 	@Column
 	private String registrationState;
 
@@ -40,7 +44,7 @@ public class Car {
 		super();
 	}
 
-	public Car(long id, String brand, String model, String variant, long price, LocalDate registrationYear,
+	public Car(long id, String brand, String model, String variant, long price,LocalDate registrationYear,
 			String registrationState) {
 		super();
 		this.id = id;

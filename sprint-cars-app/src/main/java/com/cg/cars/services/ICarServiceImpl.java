@@ -1,6 +1,6 @@
 package com.cg.cars.services;
 
-import java.time.LocalDate;
+//import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,7 +19,6 @@ public class ICarServiceImpl implements ICarService {
 
 	public void addCar(Car car) {
 		carRepository.save(car);
-
 	}
 	
 
@@ -44,10 +43,13 @@ public class ICarServiceImpl implements ICarService {
 	}
 	
 	@Override
-	public List<Car> getCarsByYear(LocalDate registrationYear) {
+	public List<Car> getCarsByYear(String year) {
 
-		return carRepository.findByRegistrationYear(registrationYear);
+		return carRepository.findByYear(year);
 	}
+	
+
+
 	
 	@Override
 	public List<Car> getCarsByModel(String model) {

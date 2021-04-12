@@ -1,9 +1,11 @@
 package com.cg.cars.repositories;
 
-import java.time.LocalDate;
+
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import com.cg.cars.models.Car;
 
@@ -16,8 +18,9 @@ public List<Car> findByRegistrationState(String registrationState);
 	
 	public List<Car> findByPrice(long price);
 	
-	public List<Car> findByRegistrationYear(LocalDate registrationYear);
+	@Query("select c from Car c where to_char(registrationYear,'yyyy') = :year")
+	public List<Car> findByYear(@Param(value = "year") String year);
 	
-//	public Car updateById(long id);
+
 
 }
