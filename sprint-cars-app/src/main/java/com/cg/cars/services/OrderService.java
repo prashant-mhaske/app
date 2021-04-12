@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.cg.cars.exceptions.OrderNotFoundException;
 import com.cg.cars.models.Order;
 import com.cg.cars.repositories.IOrderRepository;
 
@@ -17,7 +18,7 @@ public class OrderService implements IOrderService{
 	
 	@Override
 	public Order addOrder(Order order) {
-		return null;
+		return orderRepository.save(order);
 	}
 	
 	@Override
@@ -34,8 +35,8 @@ public class OrderService implements IOrderService{
 	}
 
 	@Override
-	public Order getOrderDetails(long id) {
-		return orderRepository.findById(id).get();
+	public Order getOrderDetails(long id) throws OrderNotFoundException {
+		return orderRepository.findById(id).orElseThrow(()->new OrderNotFoundException("No such Order found"));
 	}
 
 	@Override

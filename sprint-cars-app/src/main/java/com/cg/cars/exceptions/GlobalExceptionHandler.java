@@ -37,5 +37,10 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 		log.info("Car Not Found");
 		return new ResponseEntity<>(ex.getMessage(),HttpStatus.NOT_FOUND);
 	}
+	
+	@ExceptionHandler(OrderNotFoundException.class)
+	public ResponseEntity<Object> handleOrdertNotFound(OrderNotFoundException ex){
+		return new ResponseEntity<Object>(ex.getMessage(), HttpStatus.NOT_FOUND);
+	}
 
 }
