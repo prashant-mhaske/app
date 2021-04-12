@@ -2495,3 +2495,42 @@ com.cg.cars.exceptions.PaymentNotFoundException: No payment with id 67 found
 2021-04-12 14:41:21.323  INFO 15496 --- [http-nio-8090-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
 2021-04-12 14:41:21.324  INFO 15496 --- [http-nio-8090-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
 2021-04-12 14:41:40.722  WARN 15496 --- [http-nio-8090-exec-7] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [com.cg.cars.exceptions.PaymentNotFoundException: No payment with id 2 found]
+2021-04-12 14:48:06.529  INFO 15496 --- [Thread-50] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2021-04-12 14:48:06.531  INFO 15496 --- [Thread-50] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2021-04-12 14:48:06.532  INFO 15496 --- [Thread-50] com.zaxxer.hikari.HikariDataSource       : HikariPool-7 - Shutdown initiated...
+2021-04-12 14:48:06.547  INFO 15496 --- [Thread-50] com.zaxxer.hikari.HikariDataSource       : HikariPool-7 - Shutdown completed.
+2021-04-12 14:48:06.645  INFO 15496 --- [restartedMain] com.cg.cars.SprintCarsAppApplication     : Starting SprintCarsAppApplication using Java 15.0.2 on LIN51012033 with PID 15496 (C:\Users\abhisen\git\app\sprint-cars-app\bin\main started by abhisen in C:\Users\abhisen\git\app\sprint-cars-app)
+2021-04-12 14:48:06.646  INFO 15496 --- [restartedMain] com.cg.cars.SprintCarsAppApplication     : No active profile set, falling back to default profiles: default
+2021-04-12 14:48:06.973  INFO 15496 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-04-12 14:48:07.001  INFO 15496 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 27 ms. Found 7 JPA repository interfaces.
+2021-04-12 14:48:07.109  INFO 15496 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8090 (http)
+2021-04-12 14:48:07.110  INFO 15496 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-04-12 14:48:07.110  INFO 15496 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.44]
+2021-04-12 14:48:07.138  INFO 15496 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-04-12 14:48:07.139  INFO 15496 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 491 ms
+2021-04-12 14:48:07.176  INFO 15496 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-04-12 14:48:07.182  INFO 15496 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-8 - Starting...
+2021-04-12 14:48:07.224  INFO 15496 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-8 - Start completed.
+2021-04-12 14:48:07.225  INFO 15496 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.Oracle10gDialect
+2021-04-12 14:48:07.247  WARN 15496 --- [restartedMain] org.hibernate.cfg.AnnotationBinder       : HHH000139: Illegal use of @Table in a subclass of a SINGLE_TABLE hierarchy: com.cg.cars.models.Admin
+2021-04-12 14:48:07.253  WARN 15496 --- [restartedMain] org.hibernate.cfg.AnnotationBinder       : HHH000139: Illegal use of @Table in a subclass of a SINGLE_TABLE hierarchy: com.cg.cars.models.Customer
+2021-04-12 14:48:07.263  INFO 15496 --- [restartedMain] org.hibernate.tuple.PojoInstantiator     : HHH000182: No default (no-argument) constructor for class: com.cg.cars.models.Appointment (class must be instantiated by Interceptor)
+2021-04-12 14:48:07.397  INFO 15496 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-04-12 14:48:07.397  INFO 15496 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-04-12 14:48:07.404  INFO 15496 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2021-04-12 14:48:07.694  WARN 15496 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-04-12 14:48:07.750  INFO 15496 --- [restartedMain] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2021-04-12 14:48:07.782  INFO 15496 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-04-12 14:48:07.844  INFO 15496 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8090 (http) with context path ''
+2021-04-12 14:48:07.846  INFO 15496 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2021-04-12 14:48:07.850  INFO 15496 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2021-04-12 14:48:07.856  INFO 15496 --- [restartedMain] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2021-04-12 14:48:07.937  INFO 15496 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_1
+2021-04-12 14:48:07.955  INFO 15496 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: updateUsingPUT_1
+2021-04-12 14:48:08.004  INFO 15496 --- [restartedMain] com.cg.cars.SprintCarsAppApplication     : Started SprintCarsAppApplication in 1.39 seconds (JVM running for 1706.758)
+2021-04-12 14:48:08.007  INFO 15496 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2021-04-12 14:48:23.902  INFO 15496 --- [http-nio-8090-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-04-12 14:48:23.904  INFO 15496 --- [http-nio-8090-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2021-04-12 14:48:23.904  INFO 15496 --- [http-nio-8090-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2021-04-12 14:48:23.914  INFO 15496 --- [http-nio-8090-exec-1] c.c.c.exceptions.GlobalExceptionHandler  : Payment Not Found
+2021-04-12 14:48:23.917  WARN 15496 --- [http-nio-8090-exec-1] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [com.cg.cars.exceptions.PaymentNotFoundException: No payment with id 2 found]
