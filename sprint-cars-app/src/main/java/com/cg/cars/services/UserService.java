@@ -3,6 +3,7 @@ package com.cg.cars.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.cg.cars.exceptions.UserNotFoundException;
 import com.cg.cars.models.User;
 import com.cg.cars.repositories.IUserRepository;
 
@@ -16,7 +17,7 @@ public class UserService implements IUserService {
 	@Override
 	public User signIn(long userId, String password) {
 
-		User u = userRepository.findById(userId).get();
+		User u = userRepository.findById(userId).orElseThrow(() -> new UserNotFoundException("User not found !!"));
 		if (u.getRole().equals("customer")) {
 			if (u.getPassword() == password) {
 				isLoggedIn = true;
@@ -55,16 +56,15 @@ public class UserService implements IUserService {
 
 	@Override
 	public User changePassword(long id, User user) {
-		
-		User u =userRepository.findById(id).get();
-		
-		if(u.getRole().equals("customer"))
-		{
+
+		User u = userRepository.findById(id).get();
+
+		if (u.getRole().equals("customer")) {
 			return userRepository.save(user);
 		}
-		
+
 		return null;
-		
+
 	}
 
 }

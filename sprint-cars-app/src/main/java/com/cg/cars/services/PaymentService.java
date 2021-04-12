@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import com.cg.cars.exceptions.PaymentNotFoundException;
 import com.cg.cars.models.Payment;
 import com.cg.cars.repositories.IPaymentRepository;
 
@@ -23,7 +24,7 @@ public class PaymentService implements IPaymentService{
 
 	@Override
 	public Payment removePayment(long id) {
-		Payment payment=paymentRepository.findById(id).get();
+		Payment payment=getPaymentDetails(id);
 		paymentRepository.deleteById(id);
 		return payment;
 	}
@@ -35,7 +36,7 @@ public class PaymentService implements IPaymentService{
 
 	@Override
 	public Payment getPaymentDetails(long id) {
-		return paymentRepository.findById(id).get();
+		return paymentRepository.findById(id).orElseThrow(()->new PaymentNotFoundException("No payment with id "+id+" found"));
 	}
 
 	@Override
