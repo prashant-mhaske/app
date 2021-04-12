@@ -17,9 +17,8 @@ public class PaymentService implements IPaymentService{
 	IPaymentRepository paymentRepository;
 
 	@Override
-	public Payment addPayment(@RequestBody Payment payment) {
-		paymentRepository.save(payment);
-		return payment; 
+	public Payment addPayment(Payment payment) {
+		return paymentRepository.save(payment);
 	}
 
 	@Override
@@ -30,9 +29,8 @@ public class PaymentService implements IPaymentService{
 	}
 
 	@Override
-	public Payment updatePayment(long id, @RequestBody Payment payment) {
-		paymentRepository.save(payment);
-		return payment;
+	public Payment updatePayment(long id,Payment payment) {
+		return paymentRepository.save(payment);
 	}
 
 	@Override
