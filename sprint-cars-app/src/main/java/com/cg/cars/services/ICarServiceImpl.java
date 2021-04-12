@@ -7,6 +7,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.cg.cars.exceptions.CarNotFoundException;
 import com.cg.cars.models.Car;
 
 import com.cg.cars.repositories.ICarRepository;
@@ -24,7 +25,8 @@ public class ICarServiceImpl implements ICarService {
 
 	@Override
 	public Car getCarById(long id) {
-		return carRepository.findById(id).get();
+//		return carRepository.findById(id).get();
+		return carRepository.findById(id).orElseThrow(()-> new CarNotFoundException("Not found"));
 	}
 
 

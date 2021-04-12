@@ -21,6 +21,4 @@ public List<Car> findByRegistrationState(String registrationState);
 	@Query("select c from Car c where to_char(registrationYear,'yyyy') = :year")
 	public List<Car> findByYear(@Param(value = "year") String year);
 	
-
-
 }
