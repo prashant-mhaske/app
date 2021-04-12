@@ -35,8 +35,7 @@ public class OrderService implements IOrderService{
 
 	@Override
 	public Order getOrderDetails(long id) {
-		Order order = orderRepository.findById(id).get();
-		return order;
+		return orderRepository.findById(id).get();
 	}
 
 	@Override
