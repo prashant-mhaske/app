@@ -1,6 +1,6 @@
 package com.cg.cars.controllers;
 
-import java.time.LocalDate;
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,11 +51,14 @@ public class CarController {
 		
 	}
 	
-	@GetMapping("/GetCars/year/{registrationYear}")
-	private List<Car> getCarsByYear(@PathVariable("registrationYear") LocalDate registrationYear)
+	@GetMapping("/GetCars/year/{year}")
+	private List<Car> getCarsByYear(String year)
 	{
-		return carService.getCarsByYear(registrationYear);	
+		return carService.getCarsByYear(year);	
 	}
+	
+
+	
 	
 	@GetMapping("/GetCars/model/{model}")
 	private List<Car> getCarsByModel(@PathVariable("model") String model)
