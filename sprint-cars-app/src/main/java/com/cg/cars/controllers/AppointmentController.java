@@ -3,6 +3,8 @@ package com.cg.cars.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,16 +25,17 @@ public class AppointmentController {
 	AppointmentService appointService;
 	
 	@PostMapping("/add")
-	private Appointment saveAppointment(@RequestBody Appointment appointment)
+	private ResponseEntity<Appointment> addAppointment(@RequestBody Appointment appointment)
 	{
-		appointService.addAppointment(appointment);
-		return appointment;
+		Appointment a = appointService.addAppointment(appointment);
+		return new ResponseEntity<>(a, HttpStatus.OK);
 	}
 	
 	@GetMapping("/GetAppointment/{id}")
-	private Appointment getAppointment(@PathVariable("id") long id)
+	private ResponseEntity<Appointment> getAppointment(@PathVariable("id") long id)
 	{
-		return appointService.getAppointment(id);
+		Appointment a = appointService.getAppointment(id);
+		return new ResponseEntity<>(a, HttpStatus.OK);
 		
 	}
 	
@@ -43,15 +46,17 @@ public class AppointmentController {
 	}
 	
 	@DeleteMapping("/delete/{id}")
-	private void delete(@PathVariable("id") long id)
+	private ResponseEntity<Appointment> delete(@PathVariable("id") long id)
 	{
-		appointService.removeAppointment(id);
+		Appointment a = appointService.removeAppointment(id);
+		return new ResponseEntity<>(a, HttpStatus.OK);
 	}
 	
 	@PutMapping("/update/{id}")
-	private Appointment update(@PathVariable("id") long id, Appointment appointment)
+	private ResponseEntity<Appointment> update(@PathVariable("id") long id, Appointment appointment)
 	{
-		return appointService.updateAppointment(id, appointment);
+		Appointment a = appointService.updateAppointment(id, appointment);
+		return new ResponseEntity<>(a, HttpStatus.OK);
 	}
 	
 	@GetMapping("/GetOpenAppointments")

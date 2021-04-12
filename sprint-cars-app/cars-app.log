@@ -905,3 +905,162 @@ Field error in object 'customer' on field 'dob': rejected value [2020-10-12]; co
 2021-04-12 12:05:02.112  INFO 5380 --- [http-nio-8090-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
 2021-04-12 12:05:02.114  INFO 5380 --- [http-nio-8090-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
 2021-04-12 12:05:02.121  INFO 5380 --- [http-nio-8090-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 6 ms
+2021-04-12 14:42:07.074  INFO 5096 --- [restartedMain] com.cg.cars.SprintCarsAppApplication     : Starting SprintCarsAppApplication using Java 11.0.10 on DESKTOP-7VVBU9O with PID 5096 (C:\Users\ShriGanesh\git\app\sprint-cars-app\bin\main started by ShriGanesh in C:\Users\ShriGanesh\git\app\sprint-cars-app)
+2021-04-12 14:42:07.120  INFO 5096 --- [restartedMain] com.cg.cars.SprintCarsAppApplication     : No active profile set, falling back to default profiles: default
+2021-04-12 14:42:07.809  INFO 5096 --- [restartedMain] o.s.b.devtools.restart.ChangeableUrls    : The Class-Path manifest attribute in C:\Users\ShriGanesh\.gradle\caches\modules-2\files-2.1\com.oracle.database.jdbc\ojdbc8\19.8.0.0\df9cff9b91c47d06b9a0482d566ee2d83a03e586\ojdbc8-19.8.0.0.jar referenced one or more files that do not exist: file:/C:/Users/ShriGanesh/.gradle/caches/modules-2/files-2.1/com.oracle.database.jdbc/ojdbc8/19.8.0.0/df9cff9b91c47d06b9a0482d566ee2d83a03e586/oraclepki.jar
+2021-04-12 14:42:07.812  INFO 5096 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2021-04-12 14:42:07.816  INFO 5096 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2021-04-12 14:42:17.682  INFO 5096 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-04-12 14:42:18.658  INFO 5096 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 908 ms. Found 7 JPA repository interfaces.
+2021-04-12 14:42:25.169  INFO 5096 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8090 (http)
+2021-04-12 14:42:25.445  INFO 5096 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-04-12 14:42:25.455  INFO 5096 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.44]
+2021-04-12 14:42:26.903  INFO 5096 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-04-12 14:42:26.906  INFO 5096 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 19086 ms
+2021-04-12 14:42:30.275  INFO 5096 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-04-12 14:42:30.727  INFO 5096 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.29.Final
+2021-04-12 14:42:31.713  INFO 5096 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-04-12 14:42:32.399  INFO 5096 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-04-12 14:42:34.072  INFO 5096 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-04-12 14:42:34.236  INFO 5096 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.Oracle10gDialect
+2021-04-12 14:42:36.184  WARN 5096 --- [restartedMain] org.hibernate.cfg.AnnotationBinder       : HHH000139: Illegal use of @Table in a subclass of a SINGLE_TABLE hierarchy: com.cg.cars.models.Admin
+2021-04-12 14:42:36.259  WARN 5096 --- [restartedMain] org.hibernate.cfg.AnnotationBinder       : HHH000139: Illegal use of @Table in a subclass of a SINGLE_TABLE hierarchy: com.cg.cars.models.Customer
+2021-04-12 14:42:37.311  INFO 5096 --- [restartedMain] org.hibernate.tuple.PojoInstantiator     : HHH000182: No default (no-argument) constructor for class: com.cg.cars.models.Appointment (class must be instantiated by Interceptor)
+2021-04-12 14:42:44.435  INFO 5096 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-04-12 14:42:44.482  INFO 5096 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-04-12 14:42:44.609  INFO 5096 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2021-04-12 14:42:53.001  WARN 5096 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-04-12 14:42:55.259  INFO 5096 --- [restartedMain] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2021-04-12 14:42:56.038  INFO 5096 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-04-12 14:42:57.896  INFO 5096 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8090 (http) with context path ''
+2021-04-12 14:42:57.901  INFO 5096 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2021-04-12 14:42:58.279  INFO 5096 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2021-04-12 14:42:58.678  INFO 5096 --- [restartedMain] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2021-04-12 14:43:00.435  INFO 5096 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_1
+2021-04-12 14:43:00.593  INFO 5096 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: updateUsingPUT_1
+2021-04-12 14:43:01.250  INFO 5096 --- [restartedMain] com.cg.cars.SprintCarsAppApplication     : Started SprintCarsAppApplication in 57.904 seconds (JVM running for 61.709)
+2021-04-12 14:43:30.359  INFO 5096 --- [http-nio-8090-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-04-12 14:43:30.362  INFO 5096 --- [http-nio-8090-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2021-04-12 14:43:30.368  INFO 5096 --- [http-nio-8090-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 5 ms
+2021-04-12 14:45:20.289  INFO 5096 --- [Thread-8] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2021-04-12 14:45:20.524  INFO 5096 --- [Thread-8] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2021-04-12 14:45:20.561  INFO 5096 --- [Thread-8] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2021-04-12 14:45:20.809  INFO 5096 --- [Thread-8] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2021-04-12 14:45:21.668  INFO 5096 --- [restartedMain] com.cg.cars.SprintCarsAppApplication     : Starting SprintCarsAppApplication using Java 11.0.10 on DESKTOP-7VVBU9O with PID 5096 (C:\Users\ShriGanesh\git\app\sprint-cars-app\bin\main started by ShriGanesh in C:\Users\ShriGanesh\git\app\sprint-cars-app)
+2021-04-12 14:45:21.670  INFO 5096 --- [restartedMain] com.cg.cars.SprintCarsAppApplication     : No active profile set, falling back to default profiles: default
+2021-04-12 14:45:26.798  INFO 5096 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-04-12 14:45:27.974  INFO 5096 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 1169 ms. Found 7 JPA repository interfaces.
+2021-04-12 14:45:31.446  INFO 5096 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8090 (http)
+2021-04-12 14:45:31.452  INFO 5096 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-04-12 14:45:31.455  INFO 5096 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.44]
+2021-04-12 14:45:31.941  INFO 5096 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-04-12 14:45:31.942  INFO 5096 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 10244 ms
+2021-04-12 14:45:32.426  INFO 5096 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-04-12 14:45:32.635  INFO 5096 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2021-04-12 14:45:33.635  INFO 5096 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2021-04-12 14:45:33.639  INFO 5096 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.Oracle10gDialect
+2021-04-12 14:45:33.966  WARN 5096 --- [restartedMain] org.hibernate.cfg.AnnotationBinder       : HHH000139: Illegal use of @Table in a subclass of a SINGLE_TABLE hierarchy: com.cg.cars.models.Admin
+2021-04-12 14:45:34.042  WARN 5096 --- [restartedMain] org.hibernate.cfg.AnnotationBinder       : HHH000139: Illegal use of @Table in a subclass of a SINGLE_TABLE hierarchy: com.cg.cars.models.Customer
+2021-04-12 14:45:34.267  INFO 5096 --- [restartedMain] org.hibernate.tuple.PojoInstantiator     : HHH000182: No default (no-argument) constructor for class: com.cg.cars.models.Appointment (class must be instantiated by Interceptor)
+2021-04-12 14:45:35.506  INFO 5096 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-04-12 14:45:35.508  INFO 5096 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-04-12 14:45:35.563  INFO 5096 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2021-04-12 14:45:37.373  WARN 5096 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-04-12 14:45:37.805  INFO 5096 --- [restartedMain] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2021-04-12 14:45:38.007  INFO 5096 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-04-12 14:45:38.455  INFO 5096 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8090 (http) with context path ''
+2021-04-12 14:45:38.457  INFO 5096 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2021-04-12 14:45:38.468  INFO 5096 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2021-04-12 14:45:38.568  INFO 5096 --- [restartedMain] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2021-04-12 14:45:40.130  INFO 5096 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_1
+2021-04-12 14:45:40.378  INFO 5096 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: updateUsingPUT_1
+2021-04-12 14:45:40.794  INFO 5096 --- [restartedMain] com.cg.cars.SprintCarsAppApplication     : Started SprintCarsAppApplication in 19.543 seconds (JVM running for 221.253)
+2021-04-12 14:45:40.819  INFO 5096 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2021-04-12 14:47:52.473  INFO 5096 --- [http-nio-8090-exec-10] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-04-12 14:47:52.476  INFO 5096 --- [http-nio-8090-exec-10] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2021-04-12 14:47:52.480  INFO 5096 --- [http-nio-8090-exec-10] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms
+2021-04-12 14:51:11.653  INFO 5096 --- [Thread-12] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2021-04-12 14:51:11.687  INFO 5096 --- [Thread-12] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2021-04-12 14:51:11.697  INFO 5096 --- [Thread-12] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown initiated...
+2021-04-12 14:51:11.844  INFO 5096 --- [Thread-12] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown completed.
+2021-04-12 14:51:12.484  INFO 5096 --- [restartedMain] com.cg.cars.SprintCarsAppApplication     : Starting SprintCarsAppApplication using Java 11.0.10 on DESKTOP-7VVBU9O with PID 5096 (C:\Users\ShriGanesh\git\app\sprint-cars-app\bin\main started by ShriGanesh in C:\Users\ShriGanesh\git\app\sprint-cars-app)
+2021-04-12 14:51:12.489  INFO 5096 --- [restartedMain] com.cg.cars.SprintCarsAppApplication     : No active profile set, falling back to default profiles: default
+2021-04-12 14:51:17.015  INFO 5096 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-04-12 14:51:17.740  INFO 5096 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 721 ms. Found 7 JPA repository interfaces.
+2021-04-12 14:51:18.689  INFO 5096 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8090 (http)
+2021-04-12 14:51:18.694  INFO 5096 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-04-12 14:51:18.696  INFO 5096 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.44]
+2021-04-12 14:51:19.062  INFO 5096 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-04-12 14:51:19.066  INFO 5096 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 6555 ms
+2021-04-12 14:51:19.390  INFO 5096 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-04-12 14:51:19.490  INFO 5096 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Starting...
+2021-04-12 14:51:19.657  INFO 5096 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Start completed.
+2021-04-12 14:51:19.659  INFO 5096 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.Oracle10gDialect
+2021-04-12 14:51:19.972  WARN 5096 --- [restartedMain] org.hibernate.cfg.AnnotationBinder       : HHH000139: Illegal use of @Table in a subclass of a SINGLE_TABLE hierarchy: com.cg.cars.models.Admin
+2021-04-12 14:51:20.004  WARN 5096 --- [restartedMain] org.hibernate.cfg.AnnotationBinder       : HHH000139: Illegal use of @Table in a subclass of a SINGLE_TABLE hierarchy: com.cg.cars.models.Customer
+2021-04-12 14:51:20.196  INFO 5096 --- [restartedMain] org.hibernate.tuple.PojoInstantiator     : HHH000182: No default (no-argument) constructor for class: com.cg.cars.models.Appointment (class must be instantiated by Interceptor)
+2021-04-12 14:51:21.786  INFO 5096 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-04-12 14:51:21.788  INFO 5096 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-04-12 14:51:21.834  INFO 5096 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2021-04-12 14:51:23.616  WARN 5096 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-04-12 14:51:24.095  INFO 5096 --- [restartedMain] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2021-04-12 14:51:24.686  INFO 5096 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-04-12 14:51:25.744  INFO 5096 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8090 (http) with context path ''
+2021-04-12 14:51:25.746  INFO 5096 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2021-04-12 14:51:25.750  INFO 5096 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2021-04-12 14:51:25.774  INFO 5096 --- [restartedMain] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2021-04-12 14:51:26.746  INFO 5096 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_1
+2021-04-12 14:51:26.846  INFO 5096 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: updateUsingPUT_1
+2021-04-12 14:51:27.187  INFO 5096 --- [restartedMain] com.cg.cars.SprintCarsAppApplication     : Started SprintCarsAppApplication in 15.057 seconds (JVM running for 567.646)
+2021-04-12 14:51:27.213  INFO 5096 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2021-04-12 14:51:27.691  INFO 5096 --- [Thread-19] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2021-04-12 14:51:27.702  INFO 5096 --- [Thread-19] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2021-04-12 14:51:27.715  INFO 5096 --- [Thread-19] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown initiated...
+2021-04-12 14:51:28.009  INFO 5096 --- [Thread-19] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown completed.
+2021-04-12 14:51:28.526  INFO 5096 --- [restartedMain] com.cg.cars.SprintCarsAppApplication     : Starting SprintCarsAppApplication using Java 11.0.10 on DESKTOP-7VVBU9O with PID 5096 (C:\Users\ShriGanesh\git\app\sprint-cars-app\bin\main started by ShriGanesh in C:\Users\ShriGanesh\git\app\sprint-cars-app)
+2021-04-12 14:51:28.559  INFO 5096 --- [restartedMain] com.cg.cars.SprintCarsAppApplication     : No active profile set, falling back to default profiles: default
+2021-04-12 15:41:56.262  INFO 260 --- [restartedMain] com.cg.cars.SprintCarsAppApplication     : Starting SprintCarsAppApplication using Java 11.0.10 on DESKTOP-7VVBU9O with PID 260 (C:\Users\ShriGanesh\git\app\sprint-cars-app\bin\main started by ShriGanesh in C:\Users\ShriGanesh\git\app\sprint-cars-app)
+2021-04-12 15:41:56.293  INFO 260 --- [restartedMain] com.cg.cars.SprintCarsAppApplication     : No active profile set, falling back to default profiles: default
+2021-04-12 15:41:56.874  INFO 260 --- [restartedMain] o.s.b.devtools.restart.ChangeableUrls    : The Class-Path manifest attribute in C:\Users\ShriGanesh\.gradle\caches\modules-2\files-2.1\com.oracle.database.jdbc\ojdbc8\19.8.0.0\df9cff9b91c47d06b9a0482d566ee2d83a03e586\ojdbc8-19.8.0.0.jar referenced one or more files that do not exist: file:/C:/Users/ShriGanesh/.gradle/caches/modules-2/files-2.1/com.oracle.database.jdbc/ojdbc8/19.8.0.0/df9cff9b91c47d06b9a0482d566ee2d83a03e586/oraclepki.jar
+2021-04-12 15:41:56.877  INFO 260 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2021-04-12 15:41:56.881  INFO 260 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2021-04-12 15:42:09.180  INFO 260 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-04-12 15:42:10.042  INFO 260 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 800 ms. Found 7 JPA repository interfaces.
+2021-04-12 15:42:19.792  INFO 260 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8090 (http)
+2021-04-12 15:42:19.943  INFO 260 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-04-12 15:42:19.953  INFO 260 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.44]
+2021-04-12 15:42:21.456  INFO 260 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-04-12 15:42:21.459  INFO 260 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 24572 ms
+2021-04-12 15:42:26.652  INFO 260 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-04-12 15:42:27.075  INFO 260 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.29.Final
+2021-04-12 15:42:28.146  INFO 260 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-04-12 15:42:28.961  INFO 260 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-04-12 15:42:31.504  INFO 260 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-04-12 15:42:31.601  INFO 260 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.Oracle10gDialect
+2021-04-12 15:42:34.493  WARN 260 --- [restartedMain] org.hibernate.cfg.AnnotationBinder       : HHH000139: Illegal use of @Table in a subclass of a SINGLE_TABLE hierarchy: com.cg.cars.models.Admin
+2021-04-12 15:42:34.692  WARN 260 --- [restartedMain] org.hibernate.cfg.AnnotationBinder       : HHH000139: Illegal use of @Table in a subclass of a SINGLE_TABLE hierarchy: com.cg.cars.models.Customer
+2021-04-12 15:42:36.487  INFO 260 --- [restartedMain] org.hibernate.tuple.PojoInstantiator     : HHH000182: No default (no-argument) constructor for class: com.cg.cars.models.Appointment (class must be instantiated by Interceptor)
+2021-04-12 15:42:40.685  INFO 260 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-04-12 15:42:40.729  INFO 260 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-04-12 15:42:40.873  INFO 260 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2021-04-12 15:42:53.113  WARN 260 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-04-12 15:42:59.110  INFO 260 --- [restartedMain] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2021-04-12 15:43:01.438  INFO 260 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-04-12 15:43:06.344  INFO 260 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8090 (http) with context path ''
+2021-04-12 15:43:06.350  INFO 260 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2021-04-12 15:43:06.560  INFO 260 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2021-04-12 15:43:06.899  INFO 260 --- [restartedMain] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2021-04-12 15:43:10.133  INFO 260 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_1
+2021-04-12 15:43:10.552  INFO 260 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: updateUsingPUT_1
+2021-04-12 15:43:11.425  INFO 260 --- [restartedMain] com.cg.cars.SprintCarsAppApplication     : Started SprintCarsAppApplication in 80.664 seconds (JVM running for 88.344)
+2021-04-12 15:43:20.430  INFO 260 --- [http-nio-8090-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-04-12 15:43:20.441  INFO 260 --- [http-nio-8090-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2021-04-12 15:43:20.457  INFO 260 --- [http-nio-8090-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 13 ms
+2021-04-12 15:44:00.752  WARN 260 --- [http-nio-8090-exec-8] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [com.cg.cars.exceptions.AppointmentNotFoundException: Appointment Details Not Avialable]
+2021-04-12 15:48:42.607  WARN 260 --- [http-nio-8090-exec-10] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [com.cg.cars.exceptions.AppointmentNotFoundException: Appointment Details Not Avialable]
+2021-04-12 16:04:45.574  INFO 260 --- [Thread-8] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2021-04-12 16:04:45.594  INFO 260 --- [Thread-8] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2021-04-12 16:04:45.654  INFO 260 --- [Thread-8] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2021-04-12 16:04:46.334  INFO 260 --- [Thread-8] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2021-04-12 16:04:47.123  INFO 260 --- [restartedMain] com.cg.cars.SprintCarsAppApplication     : Starting SprintCarsAppApplication using Java 11.0.10 on DESKTOP-7VVBU9O with PID 260 (C:\Users\ShriGanesh\git\app\sprint-cars-app\bin\main started by ShriGanesh in C:\Users\ShriGanesh\git\app\sprint-cars-app)
+2021-04-12 16:04:47.125  INFO 260 --- [restartedMain] com.cg.cars.SprintCarsAppApplication     : No active profile set, falling back to default profiles: default
