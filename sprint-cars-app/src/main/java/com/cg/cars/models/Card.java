@@ -8,6 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+
 
 @Entity
 @Table
@@ -21,6 +23,8 @@ public class Card {
 	private String cardNumber;
 	@Column
     private LocalDate expiry;
+	@Transient
+	String expiryDate;
 	@Column
     private int cvv;
     
