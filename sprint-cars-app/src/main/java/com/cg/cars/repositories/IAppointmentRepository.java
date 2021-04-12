@@ -8,7 +8,7 @@ import com.cg.cars.models.Appointment;
 
 public interface IAppointmentRepository extends CrudRepository<Appointment, Long> {
 	
-	public List<Appointment> findByInspectionType();
+	public List<Appointment> findByInspectionType(String type);
 
 	/*
 	 * public Appointment addAppointment(Appointment appointment); public

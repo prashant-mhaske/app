@@ -2,6 +2,7 @@ package com.cg.cars.services;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,9 +17,9 @@ public class AppointmentService implements IAppointmentService {
 	IAppointmentRepository appointmentRepository;
 
 	@Override
-	public Appointment addAppointment(Appointment appointment) {
+	public void addAppointment(Appointment appointment) {
 		
-		return null;
+		appointmentRepository.save(appointment);
 	}
 
 	@Override
@@ -51,8 +52,11 @@ public class AppointmentService implements IAppointmentService {
 
 	@Override
 	public List<Appointment> getOpenAppointments() {
-		//List<Appointment> appointment = appointmentRepository.findByInspectionType().forEach(a -> a.getInspectionType().equals("open"));
-		return null;
+		List<Appointment> appointments=appointmentRepository.findByInspectionType("open");
+//		List<Appointment> appointments = appointmentRepository.findByInspectionType()
+//				.stream().filter(a ->a.getInspectionType().equals("open"))
+//				.collect(Collectors.toList());
+		return appointments;
 	}
 
 }
