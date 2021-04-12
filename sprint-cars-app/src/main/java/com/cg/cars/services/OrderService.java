@@ -31,7 +31,7 @@ public class OrderService implements IOrderService{
 	@Override
 	public Order updateOrder(long id, Order order) {
 		orderRepository.save(order);
-		return order;		
+		return order;
 	}
 
 	@Override
