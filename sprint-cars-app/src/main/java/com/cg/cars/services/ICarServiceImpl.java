@@ -1,12 +1,13 @@
 package com.cg.cars.services;
 
-import java.time.LocalDate;
+//import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.cg.cars.exceptions.CarNotFoundException;
 import com.cg.cars.models.Car;
 
 import com.cg.cars.repositories.ICarRepository;
@@ -19,13 +20,13 @@ public class ICarServiceImpl implements ICarService {
 
 	public void addCar(Car car) {
 		carRepository.save(car);
-
 	}
 	
 
 	@Override
 	public Car getCarById(long id) {
-		return carRepository.findById(id).get();
+//		return carRepository.findById(id).get();
+		return carRepository.findById(id).orElseThrow(()-> new CarNotFoundException("Not found"));
 	}
 
 
@@ -44,10 +45,13 @@ public class ICarServiceImpl implements ICarService {
 	}
 	
 	@Override
-	public List<Car> getCarsByYear(LocalDate registrationYear) {
+	public List<Car> getCarsByYear(String year) {
 
-		return carRepository.findByRegistrationYear(registrationYear);
+		return carRepository.findByYear(year);
 	}
+	
+
+
 	
 	@Override
 	public List<Car> getCarsByModel(String model) {
