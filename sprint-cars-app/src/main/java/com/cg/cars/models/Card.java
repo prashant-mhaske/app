@@ -3,6 +3,7 @@ package com.cg.cars.models;
 import java.time.LocalDate;
 
 import javax.persistence.Column;
+import javax.persistence.Embeddable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,12 +12,9 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 
 
-@Entity
-@Table
+@Embeddable
 public class Card {
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long id;
+	
 	@Column
 	private String name;
 	@Column
@@ -31,22 +29,14 @@ public class Card {
 	public Card() {
 	}
 
-	public Card(long id, String name, String number, LocalDate expiry, int cvv) {
-		this.id = id;
+	public Card(String name, String number, LocalDate expiry, int cvv) {
 		this.name = name;
 		this.cardNumber = number;
 		this.expiry = expiry;
 		this.cvv = cvv;
 	}
 
-	public long getId() {
-		return id;
-	}
-
-	public void setId(long id) {
-		this.id = id;
-	}
-
+	
 	public String getName() {
 		return name;
 	}
@@ -81,8 +71,10 @@ public class Card {
 
 	@Override
 	public String toString() {
-		return "Card [id=" + id + ", name=" + name + ", cardNumber=" + cardNumber + ", expiry=" + expiry + ", cvv=" + cvv + "]";
+		return "Card [name=" + name + ", cardNumber=" + cardNumber + ", expiry=" + expiry + ", expiryDate=" + expiryDate
+				+ ", cvv=" + cvv + "]";
 	}
+
 	
 	
     
