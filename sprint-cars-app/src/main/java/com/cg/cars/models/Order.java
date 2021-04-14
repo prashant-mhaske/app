@@ -31,9 +31,8 @@ public class Order {
 		
 	}
 
-	public Order(long id, double amount, LocalDate billingDate, Customer customer) {
+	public Order(double amount, LocalDate billingDate, Customer customer) {
 		super();
-		this.id = id;
 		this.amount = amount;
 		this.billingDate = billingDate;
 		this.customer = customer;
