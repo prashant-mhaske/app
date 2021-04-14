@@ -1,5 +1,7 @@
 package com.cg.cars.services;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -10,6 +12,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 import com.cg.cars.models.Appointment;
+import com.cg.cars.models.Customer;
+import com.cg.cars.models.Payment;
 import com.cg.cars.repositories.IAppointmentRepository;
 
 @Service
@@ -17,9 +21,28 @@ public class AppointmentService implements IAppointmentService {
 	
 	@Autowired 
 	IAppointmentRepository appointmentRepository;
+	
+	@Autowired
+	CustomerService customerService;
+	
+	@Autowired
+	PaymentService paymentService;
+	
+	
 
+	
 	@Override
-	public Appointment addAppointment(Appointment appointment) {
+	public Appointment addAppointment(long id, String location, String inspectionType, LocalDate preferredDate,
+			LocalTime preferredTime, long custId, long payId) {
+		
+		
+		
+		Customer cust = customerService.getCustomer(custId);
+		
+		Payment pay = paymentService.getPaymentDetails(payId);
+		
+		
+		Appointment appointment = new Appointment(id, location, inspectionType, preferredDate, preferredTime, cust, pay);
 		
 		return appointmentRepository.save(appointment);
 	}

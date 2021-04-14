@@ -14,7 +14,7 @@ public class Appointment {
 	@Id
 	@Column
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long Id;
+	private long id;
 	
 	@Column
 	private String location;
@@ -31,10 +31,17 @@ public class Appointment {
 	@OneToOne
 	private Payment payment;
 	
+	
+	
+	public Appointment() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
 	public Appointment(long id, String location, String inspectionType, LocalDate preferredDate,
 			LocalTime preferredTime, Customer customer, Payment payment) {
 		super();
-		Id = id;
+		id = id;
 		this.location = location;
 		this.inspectionType = inspectionType;
 		this.preferredDate = preferredDate;
@@ -44,11 +51,11 @@ public class Appointment {
 	}
 
 	public long getId() {
-		return Id;
+		return id;
 	}
 
 	public void setId(long id) {
-		Id = id;
+		id = id;
 	}
 
 	public String getLocation() {
@@ -101,7 +108,7 @@ public class Appointment {
 
 	@Override
 	public String toString() {
-		return "Appointment [Id=" + Id + ", location=" + location + ", inspectionType=" + inspectionType
+		return "Appointment [id=" + id + ", location=" + location + ", inspectionType=" + inspectionType
 				+ ", preferredDate=" + preferredDate + ", preferredTime=" + preferredTime + ", customer=" + customer
 				+ ", payment=" + payment + "]";
 	}
