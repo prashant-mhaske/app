@@ -24,47 +24,34 @@ public class CustomerController {
 	@Autowired
 	CustomerService customerService;
 	
-	@PostMapping("add")
+	@GetMapping("/get")
+	public List<Customer> getAllCustomers(){
+		return customerService.getAllCustomers();
+	}
+	
+	@GetMapping("/get/{id}")
+	public ResponseEntity<Customer> getCustomerById(@PathVariable("id") long id){
+		Customer c=customerService.getCustomer(id);
+		return new ResponseEntity<Customer>(c,HttpStatus.OK);
+	}
+	
+	@PostMapping("/add")
 	public ResponseEntity<Customer> addCustomer(@RequestBody Customer customer){
 		Customer c=customerService.addCustomer(customer);
 		return new ResponseEntity<Customer>(c, HttpStatus.OK);
 	}
 	
-	@DeleteMapping("remove/{id}")
-	public ResponseEntity<Customer> removeCustomer(@PathVariable("id") long id){
+	@DeleteMapping("/remove/{id}")
+	public ResponseEntity<Customer> removeCustomer(@PathVariable("id") long id) {
 		Customer c=customerService.removeCustomer(id);
 		return new ResponseEntity<Customer>(c,HttpStatus.OK);
 	}
 	
 	@PutMapping("/update")
 	public ResponseEntity<Customer> updateCustomer(@RequestBody Customer customer){
-		Customer c=customerService.updateCustomer(0, customer);
-		return new ResponseEntity<Customer>(c, HttpStatus.OK);
+		Customer c=customerService.updateCustomer(customer.getUserId(), customer);
+		return new ResponseEntity<Customer>(c,HttpStatus.OK);
 	}
-	
-	@GetMapping("/get/{id}")
-	public ResponseEntity<Customer> getCustomer(@PathVariable("id") long id) {
-		Customer c=customerService.getCustomer(id);
-		return new ResponseEntity<Customer>(c, HttpStatus.OK);
-	}
-	
-	@GetMapping("/get")
-	public List<Customer> getAllCustomers() {
-		return customerService.getAllCustomers();
-	}
-	
-	@GetMapping("/get/{state}")
-	public List<Customer> getCustomersByState(String state){
-		
-		return customerService.getCustomersByState(state);
-	}
-	
-	@GetMapping("/get/{city}")
-	public List<Customer> getCustomersByCity(String city){
-		
-		return customerService.getCustomersByState(city);
-	}
-
 }
 
 
