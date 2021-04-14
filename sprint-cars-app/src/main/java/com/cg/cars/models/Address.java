@@ -12,22 +12,22 @@ import javax.persistence.Table;
 @Embeddable
 public class Address {
 	
-	
+	@Column
 	private int doorNo;
 	
-	
+	@Column
 	private String street;
 	
-	
+	@Column
 	private String area;
 	
-	
+	@Column
 	private String city;
 	
-	
+	@Column
 	private String state;
 	
-	
+	@Column
 	private int pincode;
  
 	
