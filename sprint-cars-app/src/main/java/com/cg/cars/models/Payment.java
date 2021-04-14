@@ -2,6 +2,7 @@ package com.cg.cars.models;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -20,7 +21,8 @@ public class Payment {
 	private String type;
 	@Column
 	private String status;
-	@OneToOne(cascade = CascadeType.ALL)
+	
+	@Embedded
 	private Card card;
 	public Payment() {
 	}
