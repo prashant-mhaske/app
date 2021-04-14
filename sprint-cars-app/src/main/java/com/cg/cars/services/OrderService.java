@@ -1,5 +1,6 @@
 package com.cg.cars.services;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,17 +8,24 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.cg.cars.exceptions.OrderNotFoundException;
+import com.cg.cars.models.Customer;
 import com.cg.cars.models.Order;
+import com.cg.cars.repositories.ICustomerRepository;
 import com.cg.cars.repositories.IOrderRepository;
 
 @Service
-public class OrderService implements IOrderService{
+public class OrderService implements IOrderService {
 
 	@Autowired
 	IOrderRepository orderRepository;
 	
+	@Autowired
+	CustomerService customerService;
+	
 	@Override
-	public Order addOrder(Order order) {
+	public Order addOrder(double amount, LocalDate billingDate, long id) {
+		Customer customer = customerService.getCustomer(id);
+		Order order = new Order(amount, billingDate, customer);  
 		return orderRepository.save(order);
 	}
 	
