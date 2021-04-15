@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -26,9 +25,9 @@ public class OrderController {
 	@Autowired
 	OrderService orderService;
 	
-	@PostMapping("/add/{amount}/{billingDate}/{userId}")
-	public ResponseEntity<Order> addOrder(@PathVariable("amount") double amount, @RequestParam("billingDate") @DateTimeFormat(pattern="yyyy-MM-dd") LocalDate billingDate, @PathVariable("userId") long id){
-		return new ResponseEntity<>(orderService.addOrder(amount, billingDate, id), HttpStatus.OK);
+	@PostMapping("/add/{id}/{amount}/{billingDate}/{userId}")
+	public ResponseEntity<Order> addOrder(@PathVariable("id") long id, @PathVariable("amount") double amount, @RequestParam("billingDate") @DateTimeFormat(pattern="yyyy-MM-dd") LocalDate billingDate, @PathVariable("userId") long custId){
+		return new ResponseEntity<>(orderService.addOrder(id, amount, billingDate, custId), HttpStatus.OK);
 	}
 	
 	@DeleteMapping("/remove/{id}")
