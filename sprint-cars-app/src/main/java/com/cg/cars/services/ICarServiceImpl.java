@@ -1,6 +1,5 @@
 package com.cg.cars.services;
 
-//import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,20 +14,19 @@ import com.cg.cars.repositories.ICarRepository;
 @Service
 public class ICarServiceImpl implements ICarService {
 
+	List<Car> car;
 	@Autowired
 	ICarRepository carRepository;
 
-	public void addCar(Car car) {
-		carRepository.save(car);
+	public Car addCar(Car car) {
+		return carRepository.save(car);
 	}
-	
 
 	@Override
 	public Car getCarById(long id) {
-//		return carRepository.findById(id).get();
-		return carRepository.findById(id).orElseThrow(()-> new CarNotFoundException("Not found"));
-	}
 
+		return carRepository.findById(id).orElseThrow(() -> new CarNotFoundException("Not found"));
+	}
 
 	@Override
 	public List<Car> getAllCars() {
@@ -39,50 +37,67 @@ public class ICarServiceImpl implements ICarService {
 
 	@Override
 	public List<Car> getCarsByLocation(String registrationState) {
-
-		return carRepository.findByRegistrationState(registrationState);
-
+		car = carRepository.findByRegistrationState(registrationState);
+		return checkForCar(car);
 	}
-	
+
 	@Override
 	public List<Car> getCarsByYear(String year) {
-
-		return carRepository.findByYear(year);
+		car = carRepository.findByYear(year);
+		return checkForCar(car);
 	}
-	
 
-
-	
 	@Override
 	public List<Car> getCarsByModel(String model) {
+		car = carRepository.findByModel(model);
+		return checkForCar(car);
 
-		return carRepository.findByModel(model);
 	}
-	
+
 	@Override
 	public List<Car> getCarsByBrand(String brand) {
 
-		return carRepository.findByBrand(brand);
+		car = carRepository.findByBrand(brand);
+		return checkForCar(car);
 	}
-	
-	@Override
-	public List<Car> getCarsByPrice(long price) {
 
-		return carRepository.findByPrice(price);
+	@Override
+	public List<Car> getCarsByPrice(double price) {
+
+		car = carRepository.findByPrice(price);
+		return checkForCar(car);
 	}
-	
+
+	@Override
+	public List<Car> getCarsByPriceRange(double start, double end) {
+
+		return carRepository.findByPriceRange(start, end);
+	}
+
 	@Override
 	public Car update(long id, Car car) {
+		return carRepository.save(car);
 
-		Car car1 = carRepository.findById(id).get();
-		car1 = car;
-		return car1;
 	}
 
 	@Override
-	public void delete(long id) {
-
+	public Car delete(long id) {
+		Car car = getCarById(id);
 		carRepository.deleteById(id);
+		return car;
+	}
+
+	public static List<Car> checkForCar(List<Car> car) {
+
+		if (car == null)
+			throw new CarNotFoundException("Not found");
+		return car;
+	}
+
+	@Override
+	public List<Car> getCarsByModelColor(String model, String color) {
+
+		return carRepository.findByModelColor(model, color);
 	}
 
 }
