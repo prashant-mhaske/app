@@ -77,12 +77,27 @@ public class PaymentSeviceTest {
 	}
 	
 	@Test
+	public void getPaymentByIdNegativeTest() {
+		when(paymentRepository.findById(2L)).thenThrow(PaymentNotFoundException.class);
+		assertThrows(PaymentNotFoundException.class, () -> paymentService.getPaymentDetails(2L));
+		verify(paymentRepository,times(1)).findById(2L);
+	}
+	
+	@Test
 	public void deletePaymentByIdTest() {
 		when(paymentRepository.findById(1L)).thenReturn(Optional.of(payment));
 		when(paymentRepository.existsById(1L)).thenReturn(false);
 		paymentService.removePayment(1L);
 		verify(paymentRepository,times(1)).deleteById(1L);
 		assertFalse(paymentRepository.existsById(1L));
+	}
+	
+	@Test
+	public void deletePaymentByIdNegativeTest() {
+		when(paymentRepository.findById(2L)).thenThrow(PaymentNotFoundException.class);
+		assertThrows(PaymentNotFoundException.class, () -> paymentService.removePayment(2L));
+		verify(paymentRepository,times(0)).deleteById(2L);
+		verify(paymentRepository,times(1)).findById(2L);
 	}
 	
 	@Test
