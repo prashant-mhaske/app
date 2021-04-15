@@ -1,13 +1,19 @@
 package com.cg.cars.services;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 import com.cg.cars.models.Appointment;
+import com.cg.cars.models.Customer;
+import com.cg.cars.models.Payment;
 import com.cg.cars.repositories.IAppointmentRepository;
 
 @Service
@@ -15,30 +21,51 @@ public class AppointmentService implements IAppointmentService {
 	
 	@Autowired 
 	IAppointmentRepository appointmentRepository;
+	
+	@Autowired
+	CustomerService customerService;
+	
+	@Autowired
+	PaymentService paymentService;
+	
+	
 
+	
 	@Override
-	public void addAppointment(Appointment appointment) {
+	public Appointment addAppointment(long id, String location, String inspectionType, LocalDate preferredDate,
+			LocalTime preferredTime, long custId, long payId) {
 		
-		appointmentRepository.save(appointment);
+		
+		
+		Customer cust = customerService.getCustomer(custId);
+		
+		Payment pay = paymentService.getPaymentDetails(payId);
+		
+		
+		Appointment appointment = new Appointment(id, location, inspectionType, preferredDate, preferredTime, cust, pay);
+		
+		return appointmentRepository.save(appointment);
 	}
 
 	@Override
 	public Appointment removeAppointment(long id) {
-		Appointment appointment=appointmentRepository.findById(id).get();
+		Appointment appointment= getAppointment(id);
 		appointmentRepository.deleteById(id);
 		return appointment;
 	}
 
 	@Override
 	public Appointment updateAppointment(long id, Appointment appointment) {
-		appointmentRepository.save(appointment);
-		return appointment;
+		return appointmentRepository.save(appointment);
+		 
 		
 	}
 
 	@Override
 	public Appointment getAppointment(long id) {
-		return appointmentRepository.findById(id).get();
+		return appointmentRepository.findById(id)
+				.orElseThrow(()-> new com.cg.cars.exceptions.AppointmentNotFoundException("Appointment Details Not Avialable"));
+				
 		
 	}
 

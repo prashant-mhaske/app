@@ -3,6 +3,8 @@ package com.cg.cars.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.cg.cars.exceptions.InvalidPasswordException;
+import com.cg.cars.exceptions.UserNotFoundException;
 import com.cg.cars.models.User;
 import com.cg.cars.repositories.IUserRepository;
 
@@ -11,29 +13,31 @@ public class UserService implements IUserService {
 	@Autowired
 	IUserRepository userRepository;
 
-	Boolean isLoggedIn = false;
-
 	@Override
 	public User signIn(long userId, String password) {
 
-		User u = userRepository.findById(userId).get();
-		if (u.getRole().equals("customer")) {
-			if (u.getPassword() == password) {
-				isLoggedIn = true;
+		User u = userRepository.findById(userId).orElseThrow(() -> new UserNotFoundException("User not found !!"));
+		if (u.getRole().equals("Customer")) {
+			if (u.getPassword().equals(password)) {
+				u.isLoggedIn = true;
 				return u;
 			}
 
 			else {
-
-				isLoggedIn = false;
-				return null;
-
+				u.isLoggedIn = false;
+				throw new InvalidPasswordException("Invalid Password");
 			}
 		}
 
-		else if (u.getRole().equals("admin")) {
-			isLoggedIn = true;
-			return u;
+		else if (u.getRole().equals("Admin")) {
+			if (u.getPassword().equals(password)) {
+				u.isLoggedIn = true;
+				return u;
+			}
+			else {
+				u.isLoggedIn = false;
+				throw new InvalidPasswordException("Invalid Password");
+			}
 		}
 
 		else
@@ -45,8 +49,8 @@ public class UserService implements IUserService {
 	@Override
 	public User signOut(User user) {
 
-		if (isLoggedIn) {
-			isLoggedIn = false;
+		if (user.isLoggedIn) {
+			user.isLoggedIn = false;
 			return user;
 		}
 
@@ -55,16 +59,14 @@ public class UserService implements IUserService {
 
 	@Override
 	public User changePassword(long id, User user) {
-		
-		User u =userRepository.findById(id).get();
-		
-		if(u.getRole().equals("customer"))
-		{
+
+		User u = userRepository.findById(id).orElseThrow(() -> new UserNotFoundException("User not found !!"));
+		if (u.getRole().equals("customer")) {
 			return userRepository.save(user);
 		}
-		
+
 		return null;
-		
+
 	}
 
 }

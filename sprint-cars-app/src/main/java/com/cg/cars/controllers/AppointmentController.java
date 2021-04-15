@@ -1,8 +1,13 @@
 package com.cg.cars.controllers;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -10,9 +15,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cg.cars.models.Appointment;
+import com.cg.cars.models.Customer;
 import com.cg.cars.services.AppointmentService;
 
 @RestController
@@ -22,17 +29,20 @@ public class AppointmentController {
 	@Autowired
 	AppointmentService appointService;
 	
-	@PostMapping("/add")
-	private Appointment saveAppointment(@RequestBody Appointment appointment)
+	@PostMapping("/add/{Id}/{location}/{inspectionType}/{preferredDate}/{preferredTime}/{custId}/{payId}")
+	private ResponseEntity<Appointment> addAppointment(@PathVariable ("Id") long id, @PathVariable ("location") String location,
+			@PathVariable ("inspectionType") String inspectionType, @RequestParam ("preferredDate") @DateTimeFormat(pattern="yyyy-MM-dd") LocalDate preferredDate,
+			@RequestParam ("LocalTime") @DateTimeFormat(pattern="HH:mm:ss") LocalTime preferredTime, @PathVariable ("custId") long custId, @PathVariable ("payId") long payId)
 	{
-		appointService.addAppointment(appointment);
-		return appointment;
+		
+		return new ResponseEntity<>(appointService.addAppointment(id, location, inspectionType, preferredDate, preferredTime, custId, payId), HttpStatus.OK);
 	}
 	
 	@GetMapping("/GetAppointment/{id}")
-	private Appointment getAppointment(@PathVariable("id") long id)
+	private ResponseEntity<Appointment> getAppointment(@PathVariable("id") long id)
 	{
-		return appointService.getAppointment(id);
+ 
+		return new ResponseEntity<>(appointService.getAppointment(id), HttpStatus.OK);
 		
 	}
 	
@@ -43,15 +53,17 @@ public class AppointmentController {
 	}
 	
 	@DeleteMapping("/delete/{id}")
-	private void delete(@PathVariable("id") long id)
+	private ResponseEntity<Appointment> delete(@PathVariable("id") long id)
 	{
-		appointService.removeAppointment(id);
+		
+		return new ResponseEntity<>(appointService.removeAppointment(id), HttpStatus.OK);
 	}
 	
 	@PutMapping("/update/{id}")
-	private Appointment update(@PathVariable("id") long id, Appointment appointment)
+	private ResponseEntity<Appointment> update(@PathVariable("id") long id, Appointment appointment)
 	{
-		return appointService.updateAppointment(id, appointment);
+		
+		return new ResponseEntity<>(appointService.updateAppointment(id, appointment), HttpStatus.OK);
 	}
 	
 	@GetMapping("/GetOpenAppointments")

@@ -2,15 +2,27 @@ package com.cg.cars.models;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "users")
+@Inheritance(strategy = InheritanceType.JOINED)
 public class User {
+	
+	@Transient
+	@JsonIgnore
+	public boolean isLoggedIn = false;
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long userId;
 	
 	@Column
@@ -18,9 +30,6 @@ public class User {
 	
 	@Column
 	private String role;
-	
-//	@OneToOne
-//	private Customer customerUser;
 
 	public User() {
 		super();
@@ -32,7 +41,6 @@ public class User {
 		this.userId = userId;
 		this.password = password;
 		this.role = role;
-		//this.customerUser = customerUser;
 	}
 
 	public long getUserId() {
@@ -64,13 +72,6 @@ public class User {
 		return "User [userId=" + userId + ", password=" + password + ", role=" + role + "]";
 	}
 
-//	public Customer getCustomerUser() {
-//		return customerUser;
-//	}
-//
-//	public void setCustomerUser(Customer customerUser) {
-//		this.customerUser = customerUser;
-//	}
 
 	
 

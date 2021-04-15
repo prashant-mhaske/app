@@ -6,69 +6,57 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.cg.cars.exceptions.CustomerNotFoundException;
 import com.cg.cars.models.Customer;
-import com.cg.cars.models.Payment;
-import com.cg.cars.repositories.IAddressRepository;
+//import com.cg.cars.repositories.IAddressRepository;
 import com.cg.cars.repositories.ICustomerRepository;
 
 @Service
-public class CustomerService implements ICustomerService 
-{
-	@Autowired
-	ICustomerRepository customerRepository;
+public class CustomerService implements ICustomerService {
 	
 	@Autowired
-	IAddressRepository addressRepository;
+	ICustomerRepository customerRepository;
 
 	@Override
 	public Customer addCustomer(Customer customer) {
-		
-		return null;
+		return customerRepository.save(customer);
 	}
 
 	@Override
 	public Customer removeCustomer(long custId) {
-		
-		Customer customer= customerRepository.findById(custId).get();
+		Customer customer=getCustomer(custId);
 		customerRepository.deleteById(custId);
 		return customer;
-		
-		
 	}
 
 	@Override
 	public Customer updateCustomer(long custId, Customer customer) {
-		
-		customerRepository.save(customer);
-		return customer;
+		return customerRepository.save(customer);
 	}
 
 	@Override
 	public Customer getCustomer(long custId) {
-		
-		return customerRepository.findById(custId).get();
+		return customerRepository.findById(custId).orElseThrow(() -> new CustomerNotFoundException("Customer details not found!"));
 	}
 
 	@Override
 	public List<Customer> getAllCustomers() {
-		
 		List<Customer> customers=new ArrayList<>();
-		customerRepository.findAll().forEach(p -> customers.add(p));
+		customerRepository.findAll().forEach(c ->customers.add(c));
 		return customers;
 	}
 
 	@Override
 	public List<Customer> getCustomersByCity(String city) {
-		
-		return addressRepository.findByCity(city);
-		
+		// TODO Auto-generated method stub
+		return null;
 	}
-	
+
 	@Override
 	public List<Customer> getCustomersByState(String state) {
-		
-		return addressRepository.findByState(state);
-		
+		// TODO Auto-generated method stub
+		return null;
 	}
+	
 
 }

@@ -4,6 +4,8 @@ import java.time.LocalDate;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.Embeddable;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,12 +14,8 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table
 public class Customer extends User {
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long userId;
 	
 	@Column
 	private String name;
@@ -31,36 +29,23 @@ public class Customer extends User {
 	@Column
 	private  LocalDate dob;
 	
-
-	@OneToOne(cascade = CascadeType.ALL)
+	@Embedded
 	private Address address;
 	
 	
 	public Customer() {
-		super();
+		//super();
 		
 	}
 
 
-	public Customer(long userId, String name, String email, String contactNo, LocalDate dob, Address address) {
-		super();
-		super.setRole("customer");
-		this.userId = userId;
+	public Customer(long userId, String password, String name, String email, String contactNo, LocalDate dob, Address address) {
+		super(userId,password,"Customer");
 		this.name = name;
 		this.email = email;
 		this.contactNo = contactNo;
 		this.dob = dob;
 		this.address = address;
-	}
-
-
-	public long getUserId() {
-		return userId;
-	}
-
-
-	public void setUserId(long userId) {
-		this.userId = userId;
 	}
 
 
@@ -116,7 +101,7 @@ public class Customer extends User {
 
 	@Override
 	public String toString() {
-		return "Customer [userId=" + userId + ", name=" + name + ", email=" + email + ", contactNo=" + contactNo
+		return "Customer [userId=" + super.getUserId() + ", name=" + name + ", email=" + email + ", contactNo=" + contactNo
 				+ ", dob=" + dob + ", address=" + address + "]";
 	}
 	
