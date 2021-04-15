@@ -6,11 +6,18 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "users")
 @Inheritance(strategy = InheritanceType.JOINED)
 public class User {
+	
+	@Transient
+	@JsonIgnore
+	public boolean isLoggedIn = false;
 
 	@Id
 	private long userId;
