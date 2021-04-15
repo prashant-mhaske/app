@@ -29,10 +29,13 @@ public class Car{
 	private String model;
 	
 	@Column
+	private String color;
+	
+	@Column
 	private String variant;
 	
 	@Column
-	private long price;
+	private double price;
 	
 	@Column
 	private LocalDate registrationYear;
@@ -44,12 +47,13 @@ public class Car{
 		super();
 	}
 
-	public Car(long id, String brand, String model, String variant, long price,LocalDate registrationYear,
+	public Car(long id, String brand, String model,String color, String variant, double price,LocalDate registrationYear,
 			String registrationState) {
 		super();
 		this.id = id;
 		this.brand = brand;
 		this.model = model;
+		this.color = color;
 		this.variant = variant;
 		this.price = price;
 		this.registrationYear = registrationYear;
@@ -67,13 +71,21 @@ public class Car{
 	public String getBrand() {
 		return brand;
 	}
-//
+
 	public void setBrand(String brand) {
 		this.brand = brand;
 	}
 
 	public String getModel() {
 		return model;
+	}
+
+	public String getColor() {
+		return color;
+	}
+
+	public void setColor(String color) {
+		this.color = color;
 	}
 
 	public void setModel(String model) {
@@ -88,11 +100,11 @@ public class Car{
 		this.variant = variant;
 	}
 	
-	public long getPrice() {
+	public double getPrice() {
 		return price;
 	}
 
-	public void setPrice(long price) {
+	public void setPrice(double price) {
 		this.price = price;
 	}
 
@@ -114,10 +126,9 @@ public class Car{
 
 	@Override
 	public String toString() {
-		return "Car [id=" + id + ", brand=" + brand + ", model=" + model + ", variant=" + variant + ", price=" + price
-				+ ", registrationYear=" + registrationYear + ", registrationState=" + registrationState + "]";
+		return "Car [id=" + id + ", brand=" + brand + ", model=" + model + ", color=" + color + ", variant=" + variant
+				+ ", price=" + price + ", registrationYear=" + registrationYear + ", registrationState="
+				+ registrationState + "]";
 	}
-
-		
 
 }
