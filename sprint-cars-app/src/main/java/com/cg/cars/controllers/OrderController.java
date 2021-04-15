@@ -1,8 +1,10 @@
 package com.cg.cars.controllers;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -12,21 +14,21 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import com.cg.cars.models.Order;
 import com.cg.cars.services.OrderService;
 
 @RestController
-@RequestMapping("/order")
+@RequestMapping("/Order")
 public class OrderController {
 
 	@Autowired
 	OrderService orderService;
 	
-	@PostMapping("/add")
-	public ResponseEntity<Order> addOrder(@RequestBody Order order){
-		Order o = orderService.addOrder(order);
-		return new ResponseEntity<>(o, HttpStatus.OK);
+	@PostMapping("/add/{amount}/{billingDate}/{userId}")
+	public ResponseEntity<Order> addOrder(@PathVariable("amount") double amount, @RequestParam("billingDate") @DateTimeFormat(pattern="yyyy-MM-dd") LocalDate billingDate, @PathVariable("userId") long id){
+		return new ResponseEntity<>(orderService.addOrder(amount, billingDate, id), HttpStatus.OK);
 	}
 	
 	@DeleteMapping("/remove/{id}")
