@@ -3,6 +3,7 @@ package com.cg.cars.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.cg.cars.exceptions.InvalidPasswordException;
 import com.cg.cars.exceptions.UserNotFoundException;
 import com.cg.cars.models.User;
 import com.cg.cars.repositories.IUserRepository;
@@ -11,8 +12,6 @@ import com.cg.cars.repositories.IUserRepository;
 public class UserService implements IUserService {
 	@Autowired
 	IUserRepository userRepository;
-
-	
 
 	@Override
 	public User signIn(long userId, String password) {
@@ -25,16 +24,20 @@ public class UserService implements IUserService {
 			}
 
 			else {
-
 				u.isLoggedIn = false;
-				return null;
-
+				throw new InvalidPasswordException("Invalid Password");
 			}
 		}
 
 		else if (u.getRole().equals("Admin")) {
-			u.isLoggedIn = true;
-			return u;
+			if (u.getPassword().equals(password)) {
+				u.isLoggedIn = true;
+				return u;
+			}
+			else {
+				u.isLoggedIn = false;
+				throw new InvalidPasswordException("Invalid Password");
+			}
 		}
 
 		else

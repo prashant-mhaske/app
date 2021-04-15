@@ -13,6 +13,11 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 	
 	Logger log=LoggerFactory.getLogger(GlobalExceptionHandler.class);
 	
+	@ExceptionHandler
+	public ResponseEntity<Object> handleAdminNotFound(AdminNotFoundException ex){
+		log.info("Admin Not Found");
+		return new ResponseEntity<>(ex.getMessage(),HttpStatus.NOT_FOUND);
+	}
 	
 	@ExceptionHandler(CustomerNotFoundException.class)
 	public ResponseEntity<Object> handleCustomerNotFound(CustomerNotFoundException ex){
@@ -24,6 +29,12 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 	public ResponseEntity<Object> handleUserNotFound(UserNotFoundException ex){
 		log.info("User Not Found");
 		return new ResponseEntity<>(ex.getMessage(),HttpStatus.NOT_FOUND);
+	}
+	
+	@ExceptionHandler(InvalidPasswordException.class)
+	public ResponseEntity<Object> handleInvalidPasswordException(InvalidPasswordException ex){
+		log.info("Invalid Password Entered");
+		return new ResponseEntity<Object>(ex.getMessage(),HttpStatus.UNAUTHORIZED);
 	}
 	
 	@ExceptionHandler(PaymentNotFoundException.class)
