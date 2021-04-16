@@ -46,6 +46,14 @@ public class AppointmentService implements IAppointmentService {
 		
 		return appointmentRepository.save(appointment);
 	}
+	
+	public Appointment addAppointment(Appointment appointment) {
+		
+		
+		return appointmentRepository.save(appointment);
+		
+		
+	}
 
 	@Override
 	public Appointment removeAppointment(long id) {
