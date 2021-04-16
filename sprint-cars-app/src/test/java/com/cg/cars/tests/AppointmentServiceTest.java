@@ -12,7 +12,6 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.runner.RunWith;
 
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
@@ -38,7 +37,6 @@ import com.cg.cars.services.AppointmentService;
 import com.cg.cars.services.CustomerService;
 import com.cg.cars.services.PaymentService;
 
-@RunWith(SpringRunner.class)
 @SpringBootTest
 public class AppointmentServiceTest  {
 	
