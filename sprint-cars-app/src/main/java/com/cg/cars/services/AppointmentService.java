@@ -87,11 +87,7 @@ public class AppointmentService implements IAppointmentService {
 
 	@Override
 	public List<Appointment> getOpenAppointments() {
-		List<Appointment> appointments=appointmentRepository.findByInspectionType("open");
-//		List<Appointment> appointments = appointmentRepository.findByInspectionType()
-//				.stream().filter(a ->a.getInspectionType().equals("open"))
-//				.collect(Collectors.toList());
-		return appointments;
+		return appointmentRepository.findByInspectionType("open");
 	}
 
 }
