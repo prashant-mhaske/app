@@ -8,7 +8,6 @@ import com.cg.cars.models.Appointment;
 
 public interface IAppointmentService {
 
-	//public Appointment addAppointment(Appointment appointment);
 	public Appointment removeAppointment(long id); 
 	public Appointment updateAppointment(long id, Appointment appointment);
 	public Appointment getAppointment(long id);

@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 import com.cg.cars.exceptions.CustomerNotFoundException;
 import com.cg.cars.models.Customer;
-//import com.cg.cars.repositories.IAddressRepository;
 import com.cg.cars.repositories.ICustomerRepository;
 
 @Service
@@ -48,13 +47,11 @@ public class CustomerService implements ICustomerService {
 
 	@Override
 	public List<Customer> getCustomersByCity(String city) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public List<Customer> getCustomersByState(String state) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 	

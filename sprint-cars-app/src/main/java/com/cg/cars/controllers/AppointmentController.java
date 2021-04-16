@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cg.cars.models.Appointment;
-import com.cg.cars.models.Customer;
 import com.cg.cars.services.AppointmentService;
 
 @RestController

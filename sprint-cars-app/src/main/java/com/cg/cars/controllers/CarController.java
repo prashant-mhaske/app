@@ -27,63 +27,63 @@ public class CarController {
 	@PostMapping("/add")
 	public ResponseEntity<Car> saveCar(@RequestBody Car car) {
 		carService.addCar(car);
-		return new ResponseEntity<Car>(carService.addCar(car), HttpStatus.OK);
+		return new ResponseEntity<>(carService.addCar(car), HttpStatus.OK);
 	}
 
 	@GetMapping("/GetCar/{id}")
 	public ResponseEntity<Car> getCar(@PathVariable("id") long id) {
-		return new ResponseEntity<Car>(carService.getCarById(id), HttpStatus.OK);
+		return new ResponseEntity<>(carService.getCarById(id), HttpStatus.OK);
 	}
 
 	@GetMapping("/GetCars")
 	public ResponseEntity<List<Car>> getAllCars() {
-		return new ResponseEntity<List<Car>>(carService.getAllCars(), HttpStatus.OK);
+		return new ResponseEntity<>(carService.getAllCars(), HttpStatus.OK);
 	}
 
 	@GetMapping("/GetCars/location/{registrationState}")
 	public ResponseEntity<List<Car>> getCarsByLocation(@PathVariable("registrationState") String registrationState) {
-		return new ResponseEntity<List<Car>>(carService.getCarsByLocation(registrationState), HttpStatus.OK);
+		return new ResponseEntity<>(carService.getCarsByLocation(registrationState), HttpStatus.OK);
 
 	}
 
 	@GetMapping("/GetCars/year/{year}")
 	public ResponseEntity<List<Car>> getCarsByYear(String year) {
-		return new ResponseEntity<List<Car>>(carService.getCarsByYear(year), HttpStatus.OK);
+		return new ResponseEntity<>(carService.getCarsByYear(year), HttpStatus.OK);
 	}
 
 	@GetMapping("/GetCars/model/{model}")
 	public ResponseEntity<List<Car>> getCarsByModel(@PathVariable("model") String model) {
-		return new ResponseEntity<List<Car>>(carService.getCarsByModel(model), HttpStatus.OK);
+		return new ResponseEntity<>(carService.getCarsByModel(model), HttpStatus.OK);
 	}
 
 	@GetMapping("/GetCars/brand/{brand}")
 	public ResponseEntity<List<Car>> getCarsByBrand(@PathVariable("brand") String brand) {
-		return new ResponseEntity<List<Car>>(carService.getCarsByBrand(brand), HttpStatus.OK);
+		return new ResponseEntity<>(carService.getCarsByBrand(brand), HttpStatus.OK);
 	}
 
 	@GetMapping("/GetCars/model-color/{model}/{color}")
 	public ResponseEntity<List<Car>> getCarsByModelColor(@PathVariable("model") String model,
 			@PathVariable("color") String color) {
-		return new ResponseEntity<List<Car>>(carService.getCarsByModelColor(model, color), HttpStatus.OK);
+		return new ResponseEntity<>(carService.getCarsByModelColor(model, color), HttpStatus.OK);
 	}
 
 	@GetMapping("/GetCars/price/{price}")
 	public ResponseEntity<List<Car>> getCarsByPrice(@PathVariable("price") double price) {
-		return new ResponseEntity<List<Car>>(carService.getCarsByPrice(price), HttpStatus.OK);
+		return new ResponseEntity<>(carService.getCarsByPrice(price), HttpStatus.OK);
 	}
 
 	@GetMapping("/GetCars/price-range/{start}/{end}")
 	public ResponseEntity<List<Car>> getCarsByPriceRange(double start, double end) {
-		return new ResponseEntity<List<Car>>(carService.getCarsByPriceRange(start, end), HttpStatus.OK);
+		return new ResponseEntity<>(carService.getCarsByPriceRange(start, end), HttpStatus.OK);
 	}
 
 	@PutMapping("/update/{id}")
 	public ResponseEntity<Car> update(@PathVariable("id") long id, @RequestBody Car car) {
-		return new ResponseEntity<Car>(carService.update(id, car), HttpStatus.OK);
+		return new ResponseEntity<>(carService.update(id, car), HttpStatus.OK);
 	}
 
 	@DeleteMapping("/delete/{id}")
 	public ResponseEntity<Car> delete(@PathVariable("id") long id) {
-		return new ResponseEntity<Car>(carService.delete(id), HttpStatus.OK);
+		return new ResponseEntity<>(carService.delete(id), HttpStatus.OK);
 	}
 }

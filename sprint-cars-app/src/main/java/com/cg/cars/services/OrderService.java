@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 import com.cg.cars.exceptions.OrderNotFoundException;
 import com.cg.cars.models.Customer;
 import com.cg.cars.models.Order;
-//import com.cg.cars.repositories.ICustomerRepository;
 import com.cg.cars.repositories.IOrderRepository;
 
 @Service

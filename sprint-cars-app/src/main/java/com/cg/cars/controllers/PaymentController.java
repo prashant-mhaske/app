@@ -26,25 +26,25 @@ public class PaymentController {
 	@PostMapping("add")
 	public ResponseEntity<Payment> addPayment(@RequestBody Payment payment){
 		Payment p=paymentService.addPayment(payment);
-		return new ResponseEntity<Payment>(p, HttpStatus.OK);
+		return new ResponseEntity<>(p, HttpStatus.OK);
 	}
 	
 	@DeleteMapping("remove/{id}")
 	public ResponseEntity<Payment> removePayment(@PathVariable("id") long id){
 		Payment p=paymentService.removePayment(id);
-		return new ResponseEntity<Payment>(p,HttpStatus.OK);
+		return new ResponseEntity<>(p,HttpStatus.OK);
 	}
 	
 	@PutMapping("/update")
 	public ResponseEntity<Payment> updatePayment(@RequestBody Payment payment){
 		Payment p=paymentService.updatePayment(0, payment);
-		return new ResponseEntity<Payment>(p, HttpStatus.OK);
+		return new ResponseEntity<>(p, HttpStatus.OK);
 	}
 	
 	@GetMapping("/get/{id}")
 	public ResponseEntity<Payment> getPaymentDetails(@PathVariable("id") long id) {
 		Payment p=paymentService.getPaymentDetails(id);
-		return new ResponseEntity<Payment>(p, HttpStatus.OK);
+		return new ResponseEntity<>(p, HttpStatus.OK);
 	}
 	
 	@GetMapping("/get")
