@@ -38,7 +38,6 @@ public class CarServiceTest {
 	public void testGetCarException() throws CarNotFoundException {
 		int id = 5005;
 		assertThrows(CarNotFoundException.class, () -> carService.getCarById(id));
-		System.out.println("Car Id cannot be retervied");
 
 	}
 
