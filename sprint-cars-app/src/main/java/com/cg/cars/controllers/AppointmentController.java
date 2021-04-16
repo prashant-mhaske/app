@@ -60,7 +60,7 @@ public class AppointmentController {
 	}
 	
 	@PutMapping("/update/{id}")
-	public ResponseEntity<Appointment> update(@PathVariable("id") long id, Appointment appointment)
+	public ResponseEntity<Appointment> update(@PathVariable("id") long id, @RequestBody Appointment appointment)
 	{
 		
 		return new ResponseEntity<>(appointService.updateAppointment(id, appointment), HttpStatus.OK);
