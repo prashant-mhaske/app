@@ -24,7 +24,7 @@ public class PaymentController {
 	PaymentService paymentService;
 	
 	@PostMapping("add")
-	public ResponseEntity<Payment> addPayment(@RequestBody Payment payment){
+	public ResponseEntity<Payment> addPayment(@RequestBody Payment payment){	//NOSONAR
 		Payment p=paymentService.addPayment(payment);
 		return new ResponseEntity<>(p, HttpStatus.OK);
 	}
@@ -36,7 +36,7 @@ public class PaymentController {
 	}
 	
 	@PutMapping("/update")
-	public ResponseEntity<Payment> updatePayment(@RequestBody Payment payment){
+	public ResponseEntity<Payment> updatePayment(@RequestBody Payment payment){	//NOSONAR
 		Payment p=paymentService.updatePayment(0, payment);
 		return new ResponseEntity<>(p, HttpStatus.OK);
 	}

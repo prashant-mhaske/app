@@ -29,7 +29,7 @@ import com.cg.cars.repositories.ICustomerRepository;
 import com.cg.cars.repositories.IOrderRepository;
 
 @SpringBootTest
-public class OrderServiceTest {
+class OrderServiceTest {
 
 	@Autowired
 	OrderService orderService;
@@ -49,20 +49,20 @@ public class OrderServiceTest {
 	long custId;
 	
 	@BeforeEach
-	public void init() {
+	void init() {
 		customer = new Customer(101, "1234", "John", "john@cg.com", "9876543210", LocalDate.of(2000, 01, 01), new Address(1, "Main Street", "ABC", "NY", "New York", 10030));
 		order = new Order(11L, 30000, LocalDate.of(2020, 12, 12), customer);
 	}
 	
 	@Test
-	public void testAddOrder() {
+	void testAddOrder() {
 		when(orderRepository.save(order)).thenReturn(order);
 		assertEquals(order, orderService.addOrder(order));	
 		verify(orderRepository, times(1)).save(order);
 	}
 	
 	@Test
-	public void testRemoveOrder() {
+	void testRemoveOrder() {
 		when(orderRepository.findById(11L)).thenReturn(Optional.of(order));
 		when(orderRepository.existsById(11L)).thenReturn(false);
 		orderService.removeOrder(11L);
@@ -71,14 +71,14 @@ public class OrderServiceTest {
 	}
 	
 	@Test
-	public void testUpdateOrder() {
+	void testUpdateOrder() {
 		when(orderRepository.save(order)).thenReturn(order);
 		assertEquals(order, orderService.updateOrder(11L, order));
 		verify(orderRepository, times(1)).save(order);
 	}
 	
 	@Test
-	public void testGetById() {
+	void testGetById() {
 		when(orderRepository.findById(11L)).thenReturn(Optional.of(order));
 		assertEquals(order, orderService.getOrderDetails(11L));
 		verify(orderRepository,times(1)).findById(11L);
@@ -86,7 +86,7 @@ public class OrderServiceTest {
 	}
 	
 	@Test
-	public void testGetAllOrders() {
+	void testGetAllOrders() {
 		Order order2 = new Order(12, 20000, LocalDate.of(2020, 11, 12), new Customer(102, "1235", "David", "david@cg.com", "9876556789", LocalDate.of(2000, 02, 02), new Address(1, "Old Street", "AAA", "NY", "New York", 10031)));
 		Order order3 = new Order(13, 10000, LocalDate.of(2020, 12, 11), new Customer(103, "1236", "Smith", "smith@cg.com", "9999988888", LocalDate.of(2000, 03, 03), new Address(1, "Titanic Street", "BBB", "NY", "New York", 10032)));
 		
@@ -101,7 +101,7 @@ public class OrderServiceTest {
 	}
 	
 	@AfterEach
-	public void dropDown() {
+	void dropDown() {
 		order=null;
 		customer=null;
 	}

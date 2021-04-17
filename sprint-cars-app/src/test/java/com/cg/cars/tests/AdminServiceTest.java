@@ -7,7 +7,6 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -22,16 +21,12 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 
 import com.cg.cars.exceptions.AdminNotFoundException;
-import com.cg.cars.exceptions.CustomerNotFoundException;
-import com.cg.cars.models.Address;
 import com.cg.cars.models.Admin;
-import com.cg.cars.models.Customer;
 import com.cg.cars.repositories.IAdminRepository;
 import com.cg.cars.services.IAdminService;
-import com.cg.cars.services.ICustomerService;
 
 @SpringBootTest
-public class AdminServiceTest {
+class AdminServiceTest {
 	
 	@Autowired
 	IAdminService adminService;
@@ -42,19 +37,19 @@ public class AdminServiceTest {
 	Admin admin;
 	
 	@BeforeEach
-	public void init() {
+	void init() {
 		admin = new Admin(567, "passw");
 	}
 	
 	@Test
-	public void addAdminTest() {
+	void addAdminTest() {
 		when(adminRepository.save(admin)).thenReturn(admin);
 		assertEquals(admin, adminService.addAdmin(admin));
 		verify(adminRepository,times(1)).save(admin);
 	}
 	
 	@Test
-	public void removeAdminbyIdTest() {
+	void removeAdminbyIdTest() {
 		when(adminRepository.findById(567L)).thenReturn(Optional.of(admin));
 		when(adminRepository.existsById(567L)).thenReturn(false);
 		adminService.removeAdmin(567L);
@@ -63,21 +58,21 @@ public class AdminServiceTest {
 	}
 	
 	@Test
-	public void updateAdminTest() {
+	void updateAdminTest() {
 		when(adminRepository.save(admin)).thenReturn(admin);
 		assertEquals(admin, adminService.updateAdmin(1L,admin));
 		verify(adminRepository,times(1)).save(admin);
 	}
 	
 	@Test
-	public void getAdminByIdTest() {
+	void getAdminByIdTest() {
 		when(adminRepository.findById(567L)).thenReturn(Optional.of(admin));
 		assertEquals(admin, adminService.getAdmin(567L));
 		verify(adminRepository,times(1)).findById(567L);
 	}
 	
 	@Test
-	public void getAdminByIdNegativetest() {
+	void getAdminByIdNegativetest() {
 		
 		when(adminRepository.findById(568L)).thenThrow(AdminNotFoundException.class);
 		assertThrows(AdminNotFoundException.class, () ->adminService.getAdmin(568L));
@@ -85,7 +80,7 @@ public class AdminServiceTest {
 	}
 	
 	@Test
-	public void getAllAdminTest() {
+	void getAllAdminTest() {
 		 
 		Admin admin2 = new Admin(6809 , "loc");
 		Admin admin3 = new Admin(9087 , "god");
@@ -101,7 +96,7 @@ public class AdminServiceTest {
 	}
 	
 	@AfterEach
-	public void tearDown() {
+	void tearDown() {
 		admin = null;
 	}
 

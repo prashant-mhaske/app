@@ -38,7 +38,7 @@ public class OrderController {
 	}
 	
 	@PutMapping("/update/{id}")
-	public ResponseEntity<Order> updateOrder(@PathVariable("id") long id, @RequestBody Order order){
+	public ResponseEntity<Order> updateOrder(@PathVariable("id") long id, @RequestBody Order order){	//NOSONAR
 		Order o = orderService.updateOrder(id, order);
 		return new ResponseEntity<>(o, HttpStatus.OK);
 	}

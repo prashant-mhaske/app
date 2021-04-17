@@ -36,7 +36,7 @@ public class CustomerController {
 	}
 	
 	@PostMapping("/add")
-	public ResponseEntity<Customer> addCustomer(@RequestBody Customer customer){
+	public ResponseEntity<Customer> addCustomer(@RequestBody Customer customer){	//NOSONAR
 		Customer c=customerService.addCustomer(customer);
 		return new ResponseEntity<>(c, HttpStatus.OK);
 	}
@@ -48,7 +48,7 @@ public class CustomerController {
 	}
 	
 	@PutMapping("/update")
-	public ResponseEntity<Customer> updateCustomer(@RequestBody Customer customer){
+	public ResponseEntity<Customer> updateCustomer(@RequestBody Customer customer){	//NOSONAR
 		Customer c=customerService.updateCustomer(customer.getUserId(), customer);
 		return new ResponseEntity<>(c,HttpStatus.OK);
 	}

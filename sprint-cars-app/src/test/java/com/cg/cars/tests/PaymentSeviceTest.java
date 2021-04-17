@@ -1,6 +1,5 @@
 package com.cg.cars.tests;
 
-import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -29,7 +28,7 @@ import com.cg.cars.repositories.IPaymentRepository;
 import com.cg.cars.services.PaymentService;
 
 @SpringBootTest
-public class PaymentSeviceTest {
+class PaymentSeviceTest {
 	
 	@Autowired
 	PaymentService paymentService;
@@ -41,20 +40,20 @@ public class PaymentSeviceTest {
 	Card card;
 	
 	@BeforeEach
-	public void init() {
+	void init() {
 		card=new Card("Dan", "5643245776543456", LocalDate.of(2025, 06, 12), 789);
 		payment=new Payment(1, "Card", "Pending", card);
 	}
 	
 	@Test
-	public void addPaymentTest() {
+	void addPaymentTest() {
 		when(paymentRepository.save(payment)).thenReturn(payment);
 		assertEquals(payment, paymentService.addPayment(payment));
 		verify(paymentRepository,times(1)).save(payment);
 	}
 	
 	@Test
-	public void getAllPaymentTest() {
+	void getAllPaymentTest() {
 		Payment payment2=new Payment(2, "Card", "Successful", new Card("David", "5577664324543456", LocalDate.of(2023, 04, 12), 779));
 		Payment payment3=new Payment(3, "Card", "Pending", new Card("Dan", "5643776543452456", LocalDate.of(2024, 05, 10), 189));
 		
@@ -69,21 +68,21 @@ public class PaymentSeviceTest {
 	}
 	
 	@Test
-	public void getPaymentByIdTest() {
+	void getPaymentByIdTest() {
 		when(paymentRepository.findById(1L)).thenReturn(Optional.of(payment));
 		assertEquals(payment, paymentService.getPaymentDetails(1L));
 		verify(paymentRepository,times(1)).findById(1L);
 	}
 	
 	@Test
-	public void getPaymentByIdNegativeTest() {
+	void getPaymentByIdNegativeTest() {
 		when(paymentRepository.findById(2L)).thenThrow(PaymentNotFoundException.class);
 		assertThrows(PaymentNotFoundException.class, () -> paymentService.getPaymentDetails(2L));
 		verify(paymentRepository,times(1)).findById(2L);
 	}
 	
 	@Test
-	public void deletePaymentByIdTest() {
+	void deletePaymentByIdTest() {
 		when(paymentRepository.findById(1L)).thenReturn(Optional.of(payment));
 		when(paymentRepository.existsById(1L)).thenReturn(false);
 		paymentService.removePayment(1L);
@@ -92,7 +91,7 @@ public class PaymentSeviceTest {
 	}
 	
 	@Test
-	public void deletePaymentByIdNegativeTest() {
+	void deletePaymentByIdNegativeTest() {
 		when(paymentRepository.findById(2L)).thenThrow(PaymentNotFoundException.class);
 		assertThrows(PaymentNotFoundException.class, () -> paymentService.removePayment(2L));
 		verify(paymentRepository,times(0)).deleteById(2L);
@@ -100,14 +99,14 @@ public class PaymentSeviceTest {
 	}
 	
 	@Test
-	public void updatePaymentTest() {
+	void updatePaymentTest() {
 		when(paymentRepository.save(payment)).thenReturn(payment);
 		assertEquals(payment, paymentService.updatePayment(1L,payment));
 		verify(paymentRepository,times(1)).save(payment);
 	}
 	
 	@AfterEach
-	public void tearDown() {
+	void tearDown() {
 		payment=null;
 		card=null;
 	}

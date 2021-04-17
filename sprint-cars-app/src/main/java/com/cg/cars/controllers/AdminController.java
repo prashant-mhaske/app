@@ -34,7 +34,7 @@ public class AdminController {
 	}
 
 	@PostMapping("/add")
-	public ResponseEntity<Admin> addAdmin(@RequestBody Admin admin) {
+	public ResponseEntity<Admin> addAdmin(@RequestBody Admin admin) {	//NOSONAR
 		Admin a = adminService.addAdmin(admin);
 		return new ResponseEntity<>(a, HttpStatus.OK);
 	}
@@ -46,7 +46,7 @@ public class AdminController {
 	}
 
 	@PutMapping("/update")
-	public ResponseEntity<Admin> updateAdmin(@RequestBody Admin admin) {
+	public ResponseEntity<Admin> updateAdmin(@RequestBody Admin admin) {	//NOSONAR
 		Admin a = adminService.updateAdmin(admin.getUserId(), admin);
 		return new ResponseEntity<>(a, HttpStatus.OK);
 	}

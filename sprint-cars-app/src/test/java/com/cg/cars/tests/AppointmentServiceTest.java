@@ -3,7 +3,6 @@ package com.cg.cars.tests;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.test.context.junit4.SpringRunner;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -26,7 +25,6 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import com.cg.cars.exceptions.AppointmentNotFoundException;
-import com.cg.cars.exceptions.PaymentNotFoundException;
 import com.cg.cars.models.Address;
 import com.cg.cars.models.Appointment;
 import com.cg.cars.models.Card;
@@ -34,11 +32,9 @@ import com.cg.cars.models.Customer;
 import com.cg.cars.models.Payment;
 import com.cg.cars.repositories.IAppointmentRepository;
 import com.cg.cars.services.AppointmentService;
-import com.cg.cars.services.CustomerService;
-import com.cg.cars.services.PaymentService;
 
 @SpringBootTest
-public class AppointmentServiceTest  {
+class AppointmentServiceTest  {
 	
 	@Autowired
 	AppointmentService appointmentService;
@@ -54,7 +50,7 @@ public class AppointmentServiceTest  {
 	Card card;
 	
 	@BeforeEach
-	public void init() {
+	void init() {
 		address = new Address(0,  "string", "string", "string", "string", 0);
 		customer = new Customer(2,"string","string","string","string", LocalDate.of(1999, 05, 11), address);
 		card = new Card("Anik", "1234567890987654", LocalDate.of(2020, 12, 12), 134);
@@ -64,7 +60,8 @@ public class AppointmentServiceTest  {
 	
 	
 	
-	  @Test public void addAppointmentTest() {
+	  @Test 
+	  void addAppointmentTest() {
 		  
       when(appointmentRepository.save(appointment)).thenReturn(appointment);
 	  assertEquals(appointment, appointmentService.addAppointment(appointment));
@@ -72,7 +69,7 @@ public class AppointmentServiceTest  {
 	 
 	
 	@Test
-	public void getAllAppointmentTest() {
+	void getAllAppointmentTest() {
 		Appointment appointment1=new Appointment(2, "string", "string", LocalDate.of(2023, 04, 12), LocalTime.of(12, 10, 11), customer, payment);
 		Appointment appointment2=new Appointment(3, "string", "string", LocalDate.of(2024, 03, 11), LocalTime.of(10, 25, 25), customer, payment);
 		
@@ -87,21 +84,21 @@ public class AppointmentServiceTest  {
 	}
 	
 	@Test
-	public void getAppointmentByIdTest() {
+	void getAppointmentByIdTest() {
 		when(appointmentRepository.findById(1L)).thenReturn(Optional.of(appointment));
 		assertEquals(appointment, appointmentService.getAppointment(1L));
 		verify(appointmentRepository,times(1)).findById(1L);
 	}
 	
 	@Test
-	public void getAppointmentByIdNegativeTest() {
+	void getAppointmentByIdNegativeTest() {
 		when(appointmentRepository.findById(2L)).thenThrow(AppointmentNotFoundException.class);
 		assertThrows(AppointmentNotFoundException.class, () -> appointmentService.getAppointment(2L));
 		verify(appointmentRepository,times(1)).findById(2L);
 	}
 	
 	@Test
-	public void deleteAppointmentByIdTest() {
+	void deleteAppointmentByIdTest() {
 		when(appointmentRepository.findById(1L)).thenReturn(Optional.of(appointment));
 		when(appointmentRepository.existsById(1L)).thenReturn(false);
 		appointmentService.removeAppointment(1L);
@@ -110,7 +107,7 @@ public class AppointmentServiceTest  {
 	}
 	
 	@Test
-	public void deleteAppointmentByIdNegativeTest() {
+	void deleteAppointmentByIdNegativeTest() {
 		when(appointmentRepository.findById(2L)).thenThrow(AppointmentNotFoundException.class);
 		assertThrows(AppointmentNotFoundException.class, () -> appointmentService.removeAppointment(2L));
 		verify(appointmentRepository,times(0)).deleteById(2L);
@@ -118,14 +115,14 @@ public class AppointmentServiceTest  {
 	}
 	
 	@Test
-	public void updateAppointmentTest() {
+	void updateAppointmentTest() {
 		when(appointmentRepository.save(appointment)).thenReturn(appointment);
 		assertEquals(appointment, appointmentService.updateAppointment(1L,appointment));
 		verify(appointmentRepository,times(1)).save(appointment);
 	}
 	
 	@Test
-	public void getOpenAppointmentsTest() {
+	void getOpenAppointmentsTest() {
 		
 		Appointment appointment1=new Appointment(2, "string", "open", LocalDate.of(2023, 04, 12), LocalTime.of(12, 10, 11), customer, payment);
 		Appointment appointment2=new Appointment(3, "string", "open", LocalDate.of(2024, 03, 11), LocalTime.of(10, 25, 25), customer, payment);
@@ -141,7 +138,7 @@ public class AppointmentServiceTest  {
 	}
 	
 	@AfterEach
-	public void tearDown() {
+	void tearDown() {
 		address=null;
 		customer=null;
 		card=null;
