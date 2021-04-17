@@ -12,11 +12,15 @@ import com.cg.cars.models.Car;
 import com.cg.cars.repositories.ICarRepository;
 
 /**
- *
- * @author TEAM 2 MEMBERS: Abhishek Sen Prashant Mhaske Rishabh Gupta Akshay
- *         Talekar Nikhil Nichit
- *
- */
+*
+* @author TEAM 2
+* MEMBERS:	Abhishek Sen
+* 			Prashant Mhaske
+*			Rishabh Gupta
+* 			Akshay Talekar
+*			Nikhil Nichit
+*
+*/
 
 @Service
 public class ICarServiceImpl implements ICarService {
