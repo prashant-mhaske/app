@@ -35,8 +35,24 @@ class UserServiceTest {
 	
 	@BeforeEach
 	void init() {
-		address= new Address(123, "ABC Street", "AN Area", "X City", "Y State", 785600);
-		customer = new Customer(1, "pass", "Name", "email@mail.com", "8656789876", LocalDate.of(2020, 12, 02), address);
+		
+		address=new Address();
+		customer=new Customer();
+		address.setDoorNo(12);
+		address.setArea("City Area");
+		address.setCity("Pune");
+		address.setPincode(300087);
+		address.setState("MH");
+		address.setStreet("ABC Street");
+		
+		customer.setUserId(1L);
+		customer.setName("Mr X");
+		customer.setEmail("abc@mail.com");
+		customer.setPassword("pass");
+		customer.setDob(LocalDate.of(1994, 05, 12));
+		customer.setContactNo("9765456798");
+		customer.setAddress(address);
+		customer.setRole("Customer");
 	}
 	
 	@Test

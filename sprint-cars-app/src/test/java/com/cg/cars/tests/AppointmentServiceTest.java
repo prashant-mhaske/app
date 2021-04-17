@@ -51,11 +51,51 @@ class AppointmentServiceTest  {
 	
 	@BeforeEach
 	void init() {
-		address = new Address(0,  "string", "string", "string", "string", 0);
-		customer = new Customer(2,"string","string","string","string", LocalDate.of(1999, 05, 11), address);
-		card = new Card("Anik", "1234567890987654", LocalDate.of(2020, 12, 12), 134);
-		payment=new Payment(41, "visa", "pending", card);
-		appointment = new Appointment(1, "string", "string", LocalDate.of(2021, 11, 11), LocalTime.of(12, 20, 20), customer, payment);
+//		address = new Address(0,  "string", "string", "string", "string", 0);
+//		customer = new Customer(2,"string","string","string","string", LocalDate.of(1999, 05, 11), address);
+//		card = new Card("Anik", "1234567890987654", LocalDate.of(2020, 12, 12), 134);
+//		payment=new Payment(41, "visa", "pending", card);
+//		appointment = new Appointment(1, "string", "string", LocalDate.of(2021, 11, 11), LocalTime.of(12, 20, 20), customer, payment);
+		address=new Address();
+		customer=new Customer();
+		card=new Card();
+		payment=new Payment();
+		appointment=new Appointment();
+		
+		address.setDoorNo(12);
+		address.setArea("City Area");
+		address.setCity("Pune");
+		address.setPincode(300087);
+		address.setState("MH");
+		address.setStreet("ABC Street");
+		
+		customer.setUserId(123L);
+		customer.setName("Mr X");
+		customer.setEmail("abc@mail.com");
+		customer.setPassword("custPass");
+		customer.setDob(LocalDate.of(1994, 05, 12));
+		customer.setContactNo("9765456798");
+		customer.setAddress(address);
+		
+		card=new Card();
+		payment=new Payment();
+		card.setName("Dan");
+		card.setNumber("5643245776543456");
+		card.setExpiry(LocalDate.of(2025, 06, 12));
+		card.setCvv(789);
+		
+		payment.setId(1);
+		payment.setType("Card");
+		payment.setStatus("Pending");
+		payment.setCard(card);
+		
+		appointment.setCustomer(customer);
+		appointment.setId(1L);
+		appointment.setInspectionType("Inspect");
+		appointment.setLocation("DLK Area");
+		appointment.setPayment(payment);
+		appointment.setPreferredDate(LocalDate.of(2021, 04, 21));
+		appointment.setPreferredTime(LocalTime.of(20, 12));
 	}
 	
 	

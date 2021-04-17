@@ -38,7 +38,9 @@ class AdminServiceTest {
 	
 	@BeforeEach
 	void init() {
-		admin = new Admin(567, "passw");
+		admin=new Admin();
+		admin.setUserId(567L);
+		admin.setPassword("passw");
 	}
 	
 	@Test

@@ -42,8 +42,23 @@ class CustomerServiceTest {
 	
 	@BeforeEach
 	void init() {
-		address = new Address(345, "datta", "khed", "Pune" , "MH" , 456432);
-		customer = new Customer(678 , "jhk" , "Rish" , "abc@g.com" , "7566567688" , LocalDate.of(2020, 11, 15) , address);
+		
+		address=new Address();
+		customer=new Customer();
+		address.setDoorNo(345);
+		address.setArea("City Area");
+		address.setCity("Pune");
+		address.setPincode(300087);
+		address.setState("MH");
+		address.setStreet("ABC Street");
+		
+		customer.setUserId(678L);
+		customer.setName("Mr X");
+		customer.setEmail("abc@mail.com");
+		customer.setPassword("custPass");
+		customer.setDob(LocalDate.of(1994, 05, 12));
+		customer.setContactNo("9765456798");
+		customer.setAddress(address);
 	}
 	
 	@Test

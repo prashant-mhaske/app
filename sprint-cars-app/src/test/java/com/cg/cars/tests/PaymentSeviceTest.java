@@ -41,8 +41,19 @@ class PaymentSeviceTest {
 	
 	@BeforeEach
 	void init() {
-		card=new Card("Dan", "5643245776543456", LocalDate.of(2025, 06, 12), 789);
-		payment=new Payment(1, "Card", "Pending", card);
+//		card=new Card("Dan", "5643245776543456", LocalDate.of(2025, 06, 12), 789);
+//		payment=new Payment(1, "Card", "Pending", card);
+		card=new Card();
+		payment=new Payment();
+		card.setName("Dan");
+		card.setNumber("5643245776543456");
+		card.setExpiry(LocalDate.of(2025, 06, 12));
+		card.setCvv(789);
+		
+		payment.setId(1);
+		payment.setType("Card");
+		payment.setStatus("Pending");
+		payment.setCard(card);
 	}
 	
 	@Test
