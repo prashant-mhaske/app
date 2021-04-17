@@ -74,7 +74,7 @@ public class CarController {
 
 	@GetMapping("/GetCars/price-range/{start}/{end}")
 	private ResponseEntity<List<Car>> getCarsByPriceRange(double start, double end) {
-		return new ResponseEntity<List<Car>>(carService.getCarsByPriceRange(start, end), HttpStatus.OK);
+		return new ResponseEntity<>(carService.getCarsByPriceRange(start, end), HttpStatus.OK);
 	}
 
 	@PutMapping("/update/{id}")

@@ -15,9 +15,11 @@ import com.cg.cars.repositories.ICarRepository;
 public class ICarServiceImpl implements ICarService {
 
 	List<Car> car;
+	
 	@Autowired
 	ICarRepository carRepository;
-
+	
+	@Override
 	public Car addCar(Car car) {
 		return carRepository.save(car);
 	}
@@ -30,8 +32,8 @@ public class ICarServiceImpl implements ICarService {
 
 	@Override
 	public List<Car> getAllCars() {
-		List<Car> car = new ArrayList<>();
-		carRepository.findAll().forEach(car1 -> car.add(car1));
+		car = new ArrayList<>();
+		carRepository.findAll().forEach(c -> car.add(c));
 		return car;
 	}
 
@@ -51,7 +53,13 @@ public class ICarServiceImpl implements ICarService {
 	public List<Car> getCarsByModel(String model) {
 		car = carRepository.findByModel(model);
 		return checkForCar(car);
+	}
+	
+	@Override
+	public List<Car> getCarsByModelColor(String model, String color) {
 
+		car = carRepository.findByModelColor(model, color);
+		return checkForCar(car);
 	}
 
 	@Override
@@ -71,7 +79,8 @@ public class ICarServiceImpl implements ICarService {
 	@Override
 	public List<Car> getCarsByPriceRange(double start, double end) {
 
-		return carRepository.findByPriceRange(start, end);
+		car =  carRepository.findByPriceRange(start, end);
+		return checkForCar(car);
 	}
 
 	@Override
@@ -82,9 +91,9 @@ public class ICarServiceImpl implements ICarService {
 
 	@Override
 	public Car delete(long id) {
-		Car car = getCarById(id);
+		Car car1 = getCarById(id);
 		carRepository.deleteById(id);
-		return car;
+		return car1;
 	}
 
 	public static List<Car> checkForCar(List<Car> car) {
@@ -94,10 +103,5 @@ public class ICarServiceImpl implements ICarService {
 		return car;
 	}
 
-	@Override
-	public List<Car> getCarsByModelColor(String model, String color) {
-
-		return carRepository.findByModelColor(model, color);
-	}
 
 }
