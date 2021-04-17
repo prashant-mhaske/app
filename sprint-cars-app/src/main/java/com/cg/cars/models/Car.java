@@ -1,5 +1,6 @@
 package com.cg.cars.models;
 
+
 import java.time.LocalDate;
 import java.util.List;
 
@@ -9,48 +10,34 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
-
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-r
-/**
-*
-* @author TEAM 2 
-* MEMBERS: 	Abhishek Sen 
-* 		    	Prashant Mhaske
-* 			    Rishabh Gupta 
-* 			    Akshay Talekar
-*          	Nikhil Nichit
-*
-*/
-
-
-
 @Entity
 @Table
-public class Car {
+public class Car{
+	
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
-
+	
 	@Column
 	private String brand;
-
+	
 	@Column
 	private String model;
-
+	
 	@Column
 	private String color;
-
+	
 	@Column
 	private String variant;
-
+	
 	@Column
 	private double price;
-
+	
 	@Column
 	private LocalDate registrationYear;
 
@@ -61,16 +48,12 @@ public class Car {
 	@JsonIgnore
 	private List<Order> order;
 
-	@ManyToMany
-	@JsonIgnore
-	private List<Order> order;
-
 	public Car() {
 		super();
 	}
 
-	public Car(long id, String brand, String model, String color, String variant, double price,
-			LocalDate registrationYear, String registrationState) {
+	public Car(long id, String brand, String model,String color, String variant, double price,LocalDate registrationYear,
+			String registrationState) {
 		super();
 		this.id = id;
 		this.brand = brand;
@@ -121,7 +104,7 @@ public class Car {
 	public void setVariant(String variant) {
 		this.variant = variant;
 	}
-
+	
 	public double getPrice() {
 		return price;
 	}

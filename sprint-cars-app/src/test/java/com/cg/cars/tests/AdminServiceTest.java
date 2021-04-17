@@ -30,19 +30,8 @@ import com.cg.cars.repositories.IAdminRepository;
 import com.cg.cars.services.IAdminService;
 import com.cg.cars.services.ICustomerService;
 
-/**
-*
-* @author TEAM 2
-* MEMBERS:	Abhishek Sen
-* 			Prashant Mhaske
-*			Rishabh Gupta
-* 			Akshay Talekar
-*			Nikhil Nichit
-*
-*/
-
 @SpringBootTest
-public class AdminServiceTest {
+class AdminServiceTest {
 	
 	@Autowired
 	IAdminService adminService;
@@ -53,12 +42,12 @@ public class AdminServiceTest {
 	Admin admin;
 	
 	@BeforeEach
-	public void init() {
+	void init() {
 		admin = new Admin(567, "passw");
 	}
 	
 	@Test
-	public void addAdminTest() {
+	void addAdminTest() {
 		when(adminRepository.save(admin)).thenReturn(admin);
 		assertEquals(admin, adminService.addAdmin(admin));
 		verify(adminRepository,times(1)).save(admin);
@@ -67,7 +56,7 @@ public class AdminServiceTest {
 
 	
 	@Test
-	public void removeAdminbyIdTest() {
+	void removeAdminbyIdTest() {
 		when(adminRepository.findById(567L)).thenReturn(Optional.of(admin));
 		when(adminRepository.existsById(567L)).thenReturn(false);
 		adminService.removeAdmin(567L);
@@ -76,35 +65,35 @@ public class AdminServiceTest {
 	}
 	
 	@Test
-	public void removeCustomerByIdNegativeTest() {
+	void removeCustomerByIdNegativeTest() {
 		when(adminRepository.findById(2L)).thenThrow(AdminNotFoundException.class);
 		assertThrows(AdminNotFoundException.class, () -> adminService.removeAdmin(2L));
 		verify(adminRepository,times(0)).deleteById(2L);
 		verify(adminRepository,times(1)).findById(2L);
 	}
 	@Test
-	public void updateAdminTest() {
+	void updateAdminTest() {
 		when(adminRepository.save(admin)).thenReturn(admin);
 		assertEquals(admin, adminService.updateAdmin(1L,admin));
 		verify(adminRepository,times(1)).save(admin);
 	}
 	
 	@Test
-	public void updateAdminNegativeTest() {
-		when(adminRepository.findById(4L)).thenThrow(AdminNotFoundException.class);
+	void updateAdminNegativeTest() {
+		when(adminRepository.save(admin)).thenThrow(AdminNotFoundException.class);
 		assertThrows(AdminNotFoundException.class, () -> adminService.updateAdmin(4L, admin));
-		verify(adminRepository,times(1)).findById(4L);
+		verify(adminRepository,times(1)).save(admin);
 	}
 	
 	@Test
-	public void getAdminByIdTest() {
+	void getAdminByIdTest() {
 		when(adminRepository.findById(567L)).thenReturn(Optional.of(admin));
 		assertEquals(admin, adminService.getAdmin(567L));
 		verify(adminRepository,times(1)).findById(567L);
 	}
 	
 	@Test
-	public void getAdminByIdNegativetest() {
+	void getAdminByIdNegativetest() {
 		
 		when(adminRepository.findById(568L)).thenThrow(AdminNotFoundException.class);
 		assertThrows(AdminNotFoundException.class, () ->adminService.getAdmin(568L));
@@ -112,7 +101,7 @@ public class AdminServiceTest {
 	}
 	
 	@Test
-	public void getAllAdminTest() {
+	void getAllAdminTest() {
 		 
 		Admin admin2 = new Admin(6809 , "loc");
 		Admin admin3 = new Admin(9087 , "god");
@@ -128,7 +117,7 @@ public class AdminServiceTest {
 	}
 	
 	@AfterEach
-	public void tearDown() {
+	void tearDown() {
 		admin = null;
 	}
 
