@@ -6,6 +6,17 @@ import org.springframework.data.repository.CrudRepository;
 
 import com.cg.cars.models.Order;
 
+/**
+*
+* @author TEAM 2
+* MEMBERS:	Abhishek Sen
+* 			Prashant Mhaske
+*			Rishabh Gupta
+* 			Akshay Talekar
+*			Nikhil Nichit
+*
+*/
+
 public interface IOrderRepository extends CrudRepository<Order, Long>{
 //	public Order addOrder(Order order);
 //	public Order removeOrder(long id);

@@ -1,6 +1,5 @@
 package com.cg.cars.repositories;
 
-
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -8,6 +7,17 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import com.cg.cars.models.Car;
+
+/**
+*
+* @author TEAM 2
+* MEMBERS:	Abhishek Sen
+* 			Prashant Mhaske
+*			Rishabh Gupta
+* 			Akshay Talekar
+*			Nikhil Nichit
+*
+*/
 
 public interface ICarRepository extends JpaRepository<Car, Long> {
 public List<Car> findByRegistrationState(String registrationState);

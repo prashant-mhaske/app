@@ -27,6 +27,17 @@ import com.cg.cars.models.Payment;
 import com.cg.cars.repositories.IPaymentRepository;
 import com.cg.cars.services.PaymentService;
 
+/**
+*
+* @author TEAM 2
+* MEMBERS:	Abhishek Sen
+* 			Prashant Mhaske
+*			Rishabh Gupta
+* 			Akshay Talekar
+*			Nikhil Nichit
+*
+*/
+
 @SpringBootTest
 class PaymentSeviceTest {
 	

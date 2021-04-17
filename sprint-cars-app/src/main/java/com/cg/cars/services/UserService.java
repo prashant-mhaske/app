@@ -8,6 +8,17 @@ import com.cg.cars.exceptions.UserNotFoundException;
 import com.cg.cars.models.User;
 import com.cg.cars.repositories.IUserRepository;
 
+/**
+*
+* @author TEAM 2
+* MEMBERS:	Abhishek Sen
+* 			Prashant Mhaske
+*			Rishabh Gupta
+* 			Akshay Talekar
+*			Nikhil Nichit
+*
+*/
+
 @Service
 public class UserService implements IUserService {
 	@Autowired

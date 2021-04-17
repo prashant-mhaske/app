@@ -25,6 +25,17 @@ import com.cg.cars.models.Admin;
 import com.cg.cars.repositories.IAdminRepository;
 import com.cg.cars.services.IAdminService;
 
+/**
+*
+* @author TEAM 2
+* MEMBERS:	Abhishek Sen
+* 			Prashant Mhaske
+*			Rishabh Gupta
+* 			Akshay Talekar
+*			Nikhil Nichit
+*
+*/
+
 @SpringBootTest
 class AdminServiceTest {
 	

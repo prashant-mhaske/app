@@ -13,6 +13,17 @@ import com.cg.cars.models.Customer;
 import com.cg.cars.models.Payment;
 import com.cg.cars.repositories.IAppointmentRepository;
 
+/**
+*
+* @author TEAM 2
+* MEMBERS:	Abhishek Sen
+* 			Prashant Mhaske
+*			Rishabh Gupta
+* 			Akshay Talekar
+*			Nikhil Nichit
+*
+*/
+
 @Service
 public class AppointmentService implements IAppointmentService {
 	

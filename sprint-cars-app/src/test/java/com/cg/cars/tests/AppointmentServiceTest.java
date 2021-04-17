@@ -33,6 +33,17 @@ import com.cg.cars.models.Payment;
 import com.cg.cars.repositories.IAppointmentRepository;
 import com.cg.cars.services.AppointmentService;
 
+/**
+*
+* @author TEAM 2
+* MEMBERS:	Abhishek Sen
+* 			Prashant Mhaske
+*			Rishabh Gupta
+* 			Akshay Talekar
+*			Nikhil Nichit
+*
+*/
+
 @SpringBootTest
 class AppointmentServiceTest  {
 	
