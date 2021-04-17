@@ -3,6 +3,17 @@ package com.cg.cars.models;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
+/**
+ * 
+ * @author TEAM 2
+ * MEMBERS: Abhishek Sen
+ * 			Prashant Mhaske
+ * 			Rishabh Gupta
+ * 			Akshay Talekar
+ * 			Nikhil Nichit
+ *
+ */
+
 @Embeddable
 public class Address {
 	

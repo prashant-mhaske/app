@@ -77,8 +77,9 @@ public class CarController {
 		return new ResponseEntity<>(carService.getCarsByPriceRange(start, end), HttpStatus.OK);
 	}
 
-	@PutMapping("/update/{id}")
-	public ResponseEntity<Car> update(@RequestBody Car car) { // NOSONAR
+
+	@PutMapping("/update")
+	public ResponseEntity<Car> update(@RequestBody Car car) {	//NOSONAR
 		return new ResponseEntity<>(carService.update(0, car), HttpStatus.OK);
 	}
 

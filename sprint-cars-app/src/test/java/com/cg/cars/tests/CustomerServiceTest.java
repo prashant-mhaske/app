@@ -1,5 +1,6 @@
 package com.cg.cars.tests;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -22,6 +23,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 
 import com.cg.cars.exceptions.CustomerNotFoundException;
+import com.cg.cars.exceptions.PaymentNotFoundException;
 import com.cg.cars.models.Address;
 import com.cg.cars.models.Customer;
 import com.cg.cars.repositories.ICustomerRepository;
@@ -39,7 +41,7 @@ import com.cg.cars.services.CustomerService;
 */
 
 @SpringBootTest
-class CustomerServiceTest {
+public class CustomerServiceTest {
 
 	@Autowired
 	CustomerService customerService;
@@ -51,35 +53,20 @@ class CustomerServiceTest {
 	Customer customer;
 	
 	@BeforeEach
-	void init() {
-		
-		address=new Address();
-		customer=new Customer();
-		address.setDoorNo(345);
-		address.setArea("City Area");
-		address.setCity("Pune");
-		address.setPincode(300087);
-		address.setState("MH");
-		address.setStreet("ABC Street");
-		
-		customer.setUserId(678L);
-		customer.setName("Mr X");
-		customer.setEmail("abc@mail.com");
-		customer.setPassword("custPass");
-		customer.setDob(LocalDate.of(1994, 05, 12));
-		customer.setContactNo("9765456798");
-		customer.setAddress(address);
+	public void init() {
+		address = new Address(345, "datta", "khed", "Pune" , "MH" , 456432);
+		customer = new Customer(678 , "jhk" , "Rish" , "abc@g.com" , "7566567688" , LocalDate.of(2020, 11, 15) , address);
 	}
 	
 	@Test
-	void addCustomerTest() {
+	public void addCustomerTest() {
 		when(customerRepository.save(customer)).thenReturn(customer);
 		assertEquals(customer, customerService.addCustomer(customer));
 		verify(customerRepository,times(1)).save(customer);
 	}
 	
 	@Test
-	void removeCustomerbyIdTest() {
+	public void removeCustomerbyIdTest() {
 		when(customerRepository.findById(678L)).thenReturn(Optional.of(customer));
 		when(customerRepository.existsById(678L)).thenReturn(false);
 		customerService.removeCustomer(678L);
@@ -88,21 +75,36 @@ class CustomerServiceTest {
 	}
 	
 	@Test
-	void updateCustomerTest() {
+	public void removeCustomerByIdNegativeTest() {
+		when(customerRepository.findById(2L)).thenThrow(CustomerNotFoundException.class);
+		assertThrows(CustomerNotFoundException.class, () -> customerService.removeCustomer(2L));
+		verify(customerRepository,times(0)).deleteById(2L);
+		verify(customerRepository,times(1)).findById(2L);
+	}
+	
+	@Test
+	public void updateCustomerTest() {
 		when(customerRepository.save(customer)).thenReturn(customer);
 		assertEquals(customer, customerService.updateCustomer(1L,customer));
 		verify(customerRepository,times(1)).save(customer);
 	}
 	
 	@Test
-	void getCustomerByIdTest() {
+	public void updateCustomerNegativeTest() {
+		when(customerRepository.save(customer)).thenThrow(CustomerNotFoundException.class);
+		assertThrows(CustomerNotFoundException.class, () -> customerService.updateCustomer(3L, customer));
+		verify(customerRepository,times(1)).save(customer);
+	}
+	
+	@Test
+	public void getCustomerByIdTest() {
 		when(customerRepository.findById(678L)).thenReturn(Optional.of(customer));
 		assertEquals(customer, customerService.getCustomer(678L));
 		verify(customerRepository,times(1)).findById(678L);
 	}
 	
 	@Test
-	void getCustomerByIdNegativetest() {
+	public void getCustomerByIdNegativetest() {
 		
 		when(customerRepository.findById(907L)).thenThrow(CustomerNotFoundException.class);
 		assertThrows(CustomerNotFoundException.class, () ->customerService.getCustomer(907L));
@@ -110,7 +112,7 @@ class CustomerServiceTest {
 	}
 	
 	@Test
-	void getAllCustomerTest() {
+	public void getAllCustomerTest() {
 		 
 		Customer customer2 = new Customer(4675 , "jhkr" , "Rom" , "afuh@g.com" , "7568967688" , LocalDate.of(2019, 10, 21) , new Address(346, "akur", "sangam", "Nagpur" , "MH" , 456782));
 		Customer customer3 = new Customer(6788 , "jhkg" , "Shaw" , "jf@g.com" , "7566523688" , LocalDate.of(2021, 12, 15) , new Address(347, "lig", "indira", "Mumbai" , "MH" , 456492));
@@ -125,8 +127,9 @@ class CustomerServiceTest {
 		verify(customerRepository,times(1)).findAll();
 	}
 	
+	
 	@AfterEach
-	void tearDown() {
+	public void tearDown() {
 		address=null;
 		customer=null;
 	}

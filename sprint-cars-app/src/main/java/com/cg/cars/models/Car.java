@@ -9,20 +9,23 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+r
 /**
 *
 * @author TEAM 2 
 * MEMBERS: 	Abhishek Sen 
-* 		   	Prashant Mhaske
-* 			Rishabh Gupta 
-* 			Akshay Talekar
+* 		    	Prashant Mhaske
+* 			    Rishabh Gupta 
+* 			    Akshay Talekar
 *          	Nikhil Nichit
 *
 */
+
 
 
 @Entity
@@ -53,6 +56,10 @@ public class Car {
 
 	@Column
 	private String registrationState;
+	
+	@ManyToMany
+	@JsonIgnore
+	private List<Order> order;
 
 	@ManyToMany
 	@JsonIgnore

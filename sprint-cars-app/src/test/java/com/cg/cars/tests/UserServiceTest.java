@@ -33,7 +33,7 @@ import com.cg.cars.services.UserService;
 */
 
 @SpringBootTest
-class UserServiceTest {
+public class UserServiceTest {
 	
 	@Autowired
 	UserService userService;
@@ -45,29 +45,13 @@ class UserServiceTest {
 	Customer customer;
 	
 	@BeforeEach
-	void init() {
-		
-		address=new Address();
-		customer=new Customer();
-		address.setDoorNo(12);
-		address.setArea("City Area");
-		address.setCity("Pune");
-		address.setPincode(300087);
-		address.setState("MH");
-		address.setStreet("ABC Street");
-		
-		customer.setUserId(1L);
-		customer.setName("Mr X");
-		customer.setEmail("abc@mail.com");
-		customer.setPassword("pass");
-		customer.setDob(LocalDate.of(1994, 05, 12));
-		customer.setContactNo("9765456798");
-		customer.setAddress(address);
-		customer.setRole("Customer");
+	public void init() {
+		address= new Address(123, "ABC Street", "AN Area", "X City", "Y State", 785600);
+		customer = new Customer(1, "pass", "Name", "email@mail.com", "8656789876", LocalDate.of(2020, 12, 02), address);
 	}
 	
 	@Test
-	void testSignIn() {
+	public void testSignIn() {
 		when(userRepository.findById(1L)).thenReturn(Optional.of(customer));
 		assertEquals(customer, userService.signIn(1L, "pass"));
 		assertTrue(customer.isLoggedIn);
@@ -75,20 +59,27 @@ class UserServiceTest {
 	}
 	
 	@Test
-	void testInvalidPasswordException(){
+	public void CustomerSignInNegativeTest() {
+		when(userRepository.findById(4L)).thenThrow(InvalidPasswordException.class);
+		assertThrows(InvalidPasswordException.class, () -> userService.signIn(4L, "hjk"));
+		//assertEquals("Invalid Password", userService.signIn(5L, "hjk"));
+	}
+//	
+	@Test
+	public void testInvalidPasswordException(){
 		when(userRepository.findById(1L)).thenReturn(Optional.of(customer));
 		assertThrows(InvalidPasswordException.class, () ->userService.signIn(1L, "wrongpass"));
 	}
 	
 	@Test
-	void testUserNotFoundException() {
+	public void testUserNotFoundException() {
 		when(userRepository.findById(2L)).thenThrow(UserNotFoundException.class);
 		assertThrows(UserNotFoundException.class, () ->userService.signIn(2L, "pass"));
 		assertFalse(customer.isLoggedIn);
 	}
 	
 	@Test
-	void testSignOut() {
+	public void testSignOut() {
 		when(userRepository.findById(1L)).thenReturn(Optional.of(customer));
 		userService.signIn(1L, "pass");
 		userService.signOut(customer);
@@ -96,10 +87,16 @@ class UserServiceTest {
 	}
 	
 	@Test
-	void testChangePassword() {
+	public void testChangePassword() {
 		when(userRepository.findById(1L)).thenReturn(Optional.of(customer));
 		when(userRepository.save(customer)).thenReturn(customer);
 		assertEquals(customer, userService.changePassword(1L, customer));
 		verify(userRepository,times(1)).save(customer);
+	}
+	
+	@Test
+	public void changePasswordNegativeTest() {
+		when(userRepository.findById(3L)).thenThrow(UserNotFoundException.class);
+		assertThrows(UserNotFoundException.class, () ->userService.changePassword(3L, customer));
 	}
 }
