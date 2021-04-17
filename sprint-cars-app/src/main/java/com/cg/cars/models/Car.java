@@ -2,13 +2,18 @@ package com.cg.cars.models;
 
 
 import java.time.LocalDate;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table
@@ -39,6 +44,10 @@ public class Car{
 
 	@Column
 	private String registrationState;
+	
+	@ManyToMany
+	@JsonIgnore
+	private List<Order> order;
 
 	public Car() {
 		super();
@@ -119,6 +128,14 @@ public class Car{
 
 	public void setRegistrationState(String registrationState) {
 		this.registrationState = registrationState;
+	}
+
+	public List<Order> getOrder() {
+		return order;
+	}
+
+	public void setOrder(List<Order> order) {
+		this.order = order;
 	}
 
 	@Override
