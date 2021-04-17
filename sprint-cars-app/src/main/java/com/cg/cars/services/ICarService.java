@@ -5,7 +5,9 @@ import java.util.List;
 import com.cg.cars.models.Car;
 
 public interface ICarService {
-
+	
+	public Car addCar(Car car);
+	
 	public Car getCarById(long id);
 
 	public List<Car> getAllCars();
