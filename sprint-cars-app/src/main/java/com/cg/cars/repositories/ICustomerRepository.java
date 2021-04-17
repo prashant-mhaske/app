@@ -8,6 +8,17 @@ import org.springframework.data.repository.query.Param;
 
 import com.cg.cars.models.Customer;
 
+/**
+*
+* @author TEAM 2
+* MEMBERS:	Abhishek Sen
+* 			Prashant Mhaske
+*			Rishabh Gupta
+* 			Akshay Talekar
+*			Nikhil Nichit
+*
+*/
+
 public interface ICustomerRepository extends CrudRepository<Customer, Long> {
 
 //	public Customer addCustomer(Customer customer);

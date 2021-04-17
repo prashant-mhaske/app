@@ -25,7 +25,7 @@ public class CarController {
 	ICarServiceImpl carService;
 
 	@PostMapping("/add")
-	public ResponseEntity<Car> saveCar(@RequestBody Car car) {	//NOSONAR
+	public ResponseEntity<Car> saveCar(@RequestBody Car car) { // NOSONAR
 		carService.addCar(car);
 		return new ResponseEntity<>(carService.addCar(car), HttpStatus.OK);
 	}
@@ -76,6 +76,7 @@ public class CarController {
 	public ResponseEntity<List<Car>> getCarsByPriceRange(double start, double end) {
 		return new ResponseEntity<>(carService.getCarsByPriceRange(start, end), HttpStatus.OK);
 	}
+
 
 	@PutMapping("/update")
 	public ResponseEntity<Car> update(@RequestBody Car car) {	//NOSONAR

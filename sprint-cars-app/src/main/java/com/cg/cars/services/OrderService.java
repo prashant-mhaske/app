@@ -15,7 +15,19 @@ import com.cg.cars.models.Order;
 import com.cg.cars.repositories.ICarRepository;
 import com.cg.cars.repositories.IOrderRepository;
 
-import ch.qos.logback.core.net.SyslogOutputStream;
+
+/**
+*
+* @author TEAM 2
+* MEMBERS:	Abhishek Sen
+* 			    Prashant Mhaske
+*			      Rishabh Gupta
+* 			    Akshay Talekar
+*			      Nikhil Nichit
+*
+*/
+
+
 
 @Service
 public class OrderService implements IOrderService {

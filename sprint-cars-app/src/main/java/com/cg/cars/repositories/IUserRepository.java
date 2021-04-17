@@ -4,6 +4,17 @@ import org.springframework.data.repository.CrudRepository;
 
 import com.cg.cars.models.User;
 
+/**
+*
+* @author TEAM 2
+* MEMBERS:	Abhishek Sen
+* 			Prashant Mhaske
+*			Rishabh Gupta
+* 			Akshay Talekar
+*			Nikhil Nichit
+*
+*/
+
 public interface IUserRepository extends CrudRepository<User, Long>{
 
 	//String getPassword(User user);

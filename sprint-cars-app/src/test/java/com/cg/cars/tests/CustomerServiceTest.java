@@ -29,6 +29,16 @@ import com.cg.cars.models.Customer;
 import com.cg.cars.repositories.ICustomerRepository;
 import com.cg.cars.services.CustomerService;
 
+/**
+*
+* @author TEAM 2
+* MEMBERS:	Abhishek Sen
+* 			Prashant Mhaske
+*			Rishabh Gupta
+* 			Akshay Talekar
+*			Nikhil Nichit
+*
+*/
 
 @SpringBootTest
 public class CustomerServiceTest {

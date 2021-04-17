@@ -30,6 +30,17 @@ import com.cg.cars.repositories.IAdminRepository;
 import com.cg.cars.services.IAdminService;
 import com.cg.cars.services.ICustomerService;
 
+/**
+*
+* @author TEAM 2
+* MEMBERS:	Abhishek Sen
+* 			Prashant Mhaske
+*			Rishabh Gupta
+* 			Akshay Talekar
+*			Nikhil Nichit
+*
+*/
+
 @SpringBootTest
 public class AdminServiceTest {
 	

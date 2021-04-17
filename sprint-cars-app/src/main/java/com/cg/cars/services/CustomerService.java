@@ -10,6 +10,17 @@ import com.cg.cars.exceptions.CustomerNotFoundException;
 import com.cg.cars.models.Customer;
 import com.cg.cars.repositories.ICustomerRepository;
 
+/**
+*
+* @author TEAM 2
+* MEMBERS:	Abhishek Sen
+* 			Prashant Mhaske
+*			Rishabh Gupta
+* 			Akshay Talekar
+*			Nikhil Nichit
+*
+*/
+
 @Service
 public class CustomerService implements ICustomerService {
 	

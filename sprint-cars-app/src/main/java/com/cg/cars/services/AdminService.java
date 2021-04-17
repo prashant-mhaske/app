@@ -10,6 +10,17 @@ import com.cg.cars.exceptions.AdminNotFoundException;
 import com.cg.cars.models.Admin;
 import com.cg.cars.repositories.IAdminRepository;
 
+/**
+*
+* @author TEAM 2
+* MEMBERS:	Abhishek Sen
+* 			Prashant Mhaske
+*			Rishabh Gupta
+* 			Akshay Talekar
+*			Nikhil Nichit
+*
+*/
+
 @Service
 public class AdminService implements IAdminService {
 

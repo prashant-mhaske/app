@@ -6,6 +6,17 @@ import java.util.List;
 
 import com.cg.cars.models.Appointment;
 
+/**
+*
+* @author TEAM 2
+* MEMBERS:	Abhishek Sen
+* 			Prashant Mhaske
+*			Rishabh Gupta
+* 			Akshay Talekar
+*			Nikhil Nichit
+*
+*/
+
 public interface IAppointmentService {
 
 	public Appointment removeAppointment(long id); 
