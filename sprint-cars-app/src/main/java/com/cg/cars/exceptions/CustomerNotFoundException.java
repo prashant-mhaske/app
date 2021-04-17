@@ -2,16 +2,17 @@ package com.cg.cars.exceptions;
 
 public class CustomerNotFoundException extends RuntimeException {
 
-	String message;
+	private static final long serialVersionUID = 7267569579560284910L;
+
 	public CustomerNotFoundException(String message)
 	{
-		this.message= message;
+		super(message);
 	}
 	
 	@Override
 	public String getMessage()
 	{
-		return message;
+		return super.getMessage();
 	}
 
 }

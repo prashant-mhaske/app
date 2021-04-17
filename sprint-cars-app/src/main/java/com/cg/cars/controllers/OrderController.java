@@ -26,9 +26,9 @@ public class OrderController {
 	@Autowired
 	OrderService orderService;
 	
-	@PostMapping("/add/{amount}/{billingDate}/{userId}")
-	public ResponseEntity<Order> addOrder(@PathVariable("amount") double amount, @RequestParam("billingDate") @DateTimeFormat(pattern="yyyy-MM-dd") LocalDate billingDate, @PathVariable("userId") long id){
-		return new ResponseEntity<>(orderService.addOrder(amount, billingDate, id), HttpStatus.OK);
+	@PostMapping("/add/{id}/{amount}/{billingDate}/{userId}")
+	public ResponseEntity<Order> addOrder(@PathVariable("id") long id, @PathVariable("amount") double amount, @RequestParam("billingDate") @DateTimeFormat(pattern="yyyy-MM-dd") LocalDate billingDate, @PathVariable("userId") long custId){
+		return new ResponseEntity<>(orderService.addOrder(id, amount, billingDate, custId), HttpStatus.OK);
 	}
 	
 	@DeleteMapping("/remove/{id}")
@@ -38,7 +38,7 @@ public class OrderController {
 	}
 	
 	@PutMapping("/update/{id}")
-	public ResponseEntity<Order> updateOrder(@PathVariable("id") long id, Order order){
+	public ResponseEntity<Order> updateOrder(@PathVariable("id") long id, @RequestBody Order order){	//NOSONAR
 		Order o = orderService.updateOrder(id, order);
 		return new ResponseEntity<>(o, HttpStatus.OK);
 	}

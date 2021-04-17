@@ -34,7 +34,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 	@ExceptionHandler(InvalidPasswordException.class)
 	public ResponseEntity<Object> handleInvalidPasswordException(InvalidPasswordException ex){
 		log.info("Invalid Password Entered");
-		return new ResponseEntity<Object>(ex.getMessage(),HttpStatus.UNAUTHORIZED);
+		return new ResponseEntity<>(ex.getMessage(),HttpStatus.UNAUTHORIZED);
 	}
 	
 	@ExceptionHandler(PaymentNotFoundException.class)
@@ -51,12 +51,12 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 	
 	@ExceptionHandler(OrderNotFoundException.class)
 	public ResponseEntity<Object> handleOrdertNotFound(OrderNotFoundException ex){
-		return new ResponseEntity<Object>(ex.getMessage(), HttpStatus.NOT_FOUND);
+		return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
 	}
 	
 	@ExceptionHandler(AppointmentNotFoundException.class)
 	public ResponseEntity<Object> handleAppointmentNotFound(AppointmentNotFoundException ex){
-		return new ResponseEntity<Object>(ex.getMessage(),HttpStatus.NOT_FOUND);
+		return new ResponseEntity<>(ex.getMessage(),HttpStatus.NOT_FOUND);
 	}
 
 }

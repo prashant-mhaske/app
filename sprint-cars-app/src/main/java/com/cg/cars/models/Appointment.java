@@ -34,14 +34,12 @@ public class Appointment {
 	
 	
 	public Appointment() {
-		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public Appointment(long id, String location, String inspectionType, LocalDate preferredDate,
 			LocalTime preferredTime, Customer customer, Payment payment) {
 		super();
-		id = id;
+		this.id = id;
 		this.location = location;
 		this.inspectionType = inspectionType;
 		this.preferredDate = preferredDate;
@@ -55,7 +53,7 @@ public class Appointment {
 	}
 
 	public void setId(long id) {
-		id = id;
+		this.id = id;
 	}
 
 	public String getLocation() {

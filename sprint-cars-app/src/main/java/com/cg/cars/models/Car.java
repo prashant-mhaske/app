@@ -3,9 +3,6 @@ package com.cg.cars.models;
 
 import java.time.LocalDate;
 
-
-//import java.time.LocalDate;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

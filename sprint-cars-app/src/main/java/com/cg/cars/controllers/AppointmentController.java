@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cg.cars.models.Appointment;
-import com.cg.cars.models.Customer;
 import com.cg.cars.services.AppointmentService;
 
 @RestController
@@ -30,7 +29,7 @@ public class AppointmentController {
 	AppointmentService appointService;
 	
 	@PostMapping("/add/{Id}/{location}/{inspectionType}/{preferredDate}/{preferredTime}/{custId}/{payId}")
-	private ResponseEntity<Appointment> addAppointment(@PathVariable ("Id") long id, @PathVariable ("location") String location,
+	public ResponseEntity<Appointment> addAppointment(@PathVariable ("Id") long id, @PathVariable ("location") String location,
 			@PathVariable ("inspectionType") String inspectionType, @RequestParam ("preferredDate") @DateTimeFormat(pattern="yyyy-MM-dd") LocalDate preferredDate,
 			@RequestParam ("LocalTime") @DateTimeFormat(pattern="HH:mm:ss") LocalTime preferredTime, @PathVariable ("custId") long custId, @PathVariable ("payId") long payId)
 	{
@@ -39,7 +38,7 @@ public class AppointmentController {
 	}
 	
 	@GetMapping("/GetAppointment/{id}")
-	private ResponseEntity<Appointment> getAppointment(@PathVariable("id") long id)
+	public ResponseEntity<Appointment> getAppointment(@PathVariable("id") long id)
 	{
  
 		return new ResponseEntity<>(appointService.getAppointment(id), HttpStatus.OK);
@@ -53,21 +52,21 @@ public class AppointmentController {
 	}
 	
 	@DeleteMapping("/delete/{id}")
-	private ResponseEntity<Appointment> delete(@PathVariable("id") long id)
+	public ResponseEntity<Appointment> delete(@PathVariable("id") long id)
 	{
 		
 		return new ResponseEntity<>(appointService.removeAppointment(id), HttpStatus.OK);
 	}
 	
 	@PutMapping("/update/{id}")
-	private ResponseEntity<Appointment> update(@PathVariable("id") long id, Appointment appointment)
+	public ResponseEntity<Appointment> update(@PathVariable("id") long id, @RequestBody Appointment appointment)	//NOSONAR
 	{
 		
 		return new ResponseEntity<>(appointService.updateAppointment(id, appointment), HttpStatus.OK);
 	}
 	
 	@GetMapping("/GetOpenAppointments")
-	private List<Appointment> getOpenAppointments()
+	public List<Appointment> getOpenAppointments()
 	{
 		return appointService.getOpenAppointments();
 	}

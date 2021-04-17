@@ -32,25 +32,25 @@ public class CustomerController {
 	@GetMapping("/get/{id}")
 	public ResponseEntity<Customer> getCustomerById(@PathVariable("id") long id){
 		Customer c=customerService.getCustomer(id);
-		return new ResponseEntity<Customer>(c,HttpStatus.OK);
+		return new ResponseEntity<>(c,HttpStatus.OK);
 	}
 	
 	@PostMapping("/add")
-	public ResponseEntity<Customer> addCustomer(@RequestBody Customer customer){
+	public ResponseEntity<Customer> addCustomer(@RequestBody Customer customer){	//NOSONAR
 		Customer c=customerService.addCustomer(customer);
-		return new ResponseEntity<Customer>(c, HttpStatus.OK);
+		return new ResponseEntity<>(c, HttpStatus.OK);
 	}
 	
 	@DeleteMapping("/remove/{id}")
 	public ResponseEntity<Customer> removeCustomer(@PathVariable("id") long id) {
 		Customer c=customerService.removeCustomer(id);
-		return new ResponseEntity<Customer>(c,HttpStatus.OK);
+		return new ResponseEntity<>(c,HttpStatus.OK);
 	}
 	
 	@PutMapping("/update")
-	public ResponseEntity<Customer> updateCustomer(@RequestBody Customer customer){
+	public ResponseEntity<Customer> updateCustomer(@RequestBody Customer customer){	//NOSONAR
 		Customer c=customerService.updateCustomer(customer.getUserId(), customer);
-		return new ResponseEntity<Customer>(c,HttpStatus.OK);
+		return new ResponseEntity<>(c,HttpStatus.OK);
 	}
 }
 

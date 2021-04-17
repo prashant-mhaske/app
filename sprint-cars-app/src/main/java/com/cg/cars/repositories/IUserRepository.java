@@ -11,7 +11,6 @@ public interface IUserRepository extends CrudRepository<User, Long>{
 //	public User signOut(User user);
 //	public User changePassword(long id, User user);
 
-	//public User findByUserId(Long userId);
 
 
 

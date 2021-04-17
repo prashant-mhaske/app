@@ -2,16 +2,9 @@ package com.cg.cars.models;
 
 import java.time.LocalDate;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
-import javax.persistence.Embeddable;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
 
 @Entity
 public class Customer extends User {
@@ -34,7 +27,6 @@ public class Customer extends User {
 	
 	
 	public Customer() {
-		//super();
 		
 	}
 

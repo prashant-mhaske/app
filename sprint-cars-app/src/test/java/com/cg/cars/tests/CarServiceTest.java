@@ -53,11 +53,7 @@ class CarServiceTest {
 		
 	}
 
-	@Test
-	 void getCarExceptionTest() throws CarNotFoundException {
-		int id = 5005;
-		assertThrows(CarNotFoundException.class, () -> carService.getCarById(id));
-	}
+
 
 	@Test
 	void addCarTest()
@@ -67,7 +63,14 @@ class CarServiceTest {
 	}
 	
 	@Test
-	 void getAllCarsTest() {
+	void testGetCarException() throws CarNotFoundException {
+		int id = 5005;
+		assertThrows(CarNotFoundException.class, () -> carService.getCarById(id));
+
+	}
+
+	@Test
+	void getAllCarsTest() {
 		when(carRepository.findAll()).thenReturn(Stream
 				.of(new Car(103, "Ford", "Safari", "Black", "Vxi", 18.5, LocalDate.of(2020, 01, 25), "Maharashtra"),
 						new Car(104, "Ford", "Eco", "Black", "Vxi", 15.5, LocalDate.of(2016, 03, 15), "Maharashtra"),car)
@@ -77,7 +80,7 @@ class CarServiceTest {
 	}
 
 	@Test
-	 void getCarByIdTest() {
+	void getCarByIdTest() {
 		Car c = new Car(101, "Ford", "Safari", "Black", "Vxi", 18.5, LocalDate.of(2020, 01, 25), "Maharashtra");
 		when(carRepository.findById(c.getId())).thenReturn(Optional.of(c));
 		assertEquals(c, carService.getCarById(c.getId()));
@@ -85,7 +88,7 @@ class CarServiceTest {
 	}
 
 	@Test
-	 void getCarsByLocationTest() {
+	void getCarsByLocationTest() {
 		String location = "Maharashtra";
 
 		Car car1 = new Car(103, "Ford", "Safari", "Black", "Vxi", 18.5, LocalDate.of(2020, 01, 25), "Maharashtra");
@@ -114,7 +117,9 @@ class CarServiceTest {
 	}
 
 	@Test
-	 void getCarsByYearTest() {
+
+	void getCarsByYearTest() {
+
 		Car car1 = new Car(103, "Ford", "Safari", "Black", "Vxi", 18.5, LocalDate.of(2020, 01, 25), "Maharashtra");
 		Car car2 = new Car(104, "Ford", "Eco", "Black", "Vxi", 15.5, LocalDate.of(2020, 03, 15), "Maharashtra");
 
@@ -137,7 +142,7 @@ class CarServiceTest {
 		}
 	
 	@Test
-	 void getCarsByBrandTest() {
+	void getCarsByBrandTest() {
 		Car car1 = new Car(103, "Ford", "Safari", "Black", "Vxi", 18.5, LocalDate.of(2020, 01, 25), "Maharashtra");
 		Car car2 = new Car(104, "Ford", "Eco", "Black", "Vxi", 15.5, LocalDate.of(2016, 03, 15), "Maharashtra");
 
@@ -160,7 +165,9 @@ class CarServiceTest {
 		}
 	
 	@Test
-	 void getCarsByModelTest() {
+
+	void getCarsByModelTest() {
+
 		Car car1 = new Car(103, "Ford", "Eco", "Orange", "Vxi", 18.5, LocalDate.of(2020, 01, 25), "Maharashtra");
 		Car car2 = new Car(104, "Ford", "Eco", "Black", "Vxi", 15.5, LocalDate.of(2016, 03, 15), "Maharashtra");
 
@@ -184,7 +191,9 @@ class CarServiceTest {
 		}
 	
 	@Test
-	 void getCarsByPriceTest() {
+
+	void getCarsByPriceTest() {
+
 		Car car1 = new Car(103, "Ford", "Eco", "Orange", "Vxi", 18.5, LocalDate.of(2020, 01, 25), "Maharashtra");
 		Car car2 = new Car(104, "Ford", "Eco", "Black", "Vxi", 18.5, LocalDate.of(2016, 03, 15), "Maharashtra");
 
@@ -209,7 +218,9 @@ class CarServiceTest {
 		}
 	 
 	@Test
-	 void getCarsByPriceRangeTest() {
+
+	void getCarsByPriceRangeTest() {
+
 		Car car1 = new Car(103, "Ford", "Eco", "Orange", "Vxi", 18.5, LocalDate.of(2020, 01, 25), "Maharashtra");
 		Car car2 = new Car(104, "Ford", "Eco", "Black", "Vxi", 8.5, LocalDate.of(2016, 03, 15), "Maharashtra");
 
@@ -232,7 +243,9 @@ class CarServiceTest {
 		}
 	
 	@Test
-	 void getCarsByModelColorTest() {
+
+	void getCarsByModelColorTest() {
+
 		Car car1 = new Car(103, "Honda", "city", "Black", "Vxi", 18.5, LocalDate.of(2020, 01, 25), "Maharashtra");
 		Car car2 = new Car(104, "Honda", "city", "Black", "Vxi", 8.5, LocalDate.of(2016, 03, 15), "Maharashtra");
 
@@ -259,14 +272,18 @@ class CarServiceTest {
 	 
 	
 	@Test
-	 void updateCarTest() {
+
+	void updateCarTest() {
+
 		when(carRepository.save(car5)).thenReturn(car5);
 		assertEquals(car5, carService.update(car5.getId(), car5));
 		verify(carRepository, times(1)).save(car5);
 	}
 
 	@Test
-	 void deleteTest() {
+
+	void deleteTest() {
+
 		Car car6 = new Car(103, "Ford", "Eco", "Orange", "Vxi", 18.5, LocalDate.of(2020, 01, 25), "Maharashtra");
 		when(carRepository.findById(car6.getId())).thenReturn(Optional.of(car6));
 		assertEquals(car6, carService.delete(car6.getId()));

@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 import com.cg.cars.exceptions.OrderNotFoundException;
 import com.cg.cars.models.Customer;
 import com.cg.cars.models.Order;
-import com.cg.cars.repositories.ICustomerRepository;
 import com.cg.cars.repositories.IOrderRepository;
 
 @Service
@@ -23,15 +22,19 @@ public class OrderService implements IOrderService {
 	CustomerService customerService;
 	
 	@Override
-	public Order addOrder(double amount, LocalDate billingDate, long id) {
-		Customer customer = customerService.getCustomer(id);
-		Order order = new Order(amount, billingDate, customer);  
+	public Order addOrder(long id, double amount, LocalDate billingDate, long custId) {
+		Customer customer = customerService.getCustomer(custId);
+		Order order = new Order(id, amount, billingDate, customer);  
+		return orderRepository.save(order);
+	}
+	
+	public Order addOrder(Order order) {
 		return orderRepository.save(order);
 	}
 	
 	@Override
 	public Order removeOrder(long id) {
-		Order order = orderRepository.findById(id).get();
+		Order order = getOrderDetails(id);
 		orderRepository.deleteById(id);
 		return order;
 	}
