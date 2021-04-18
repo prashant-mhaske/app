@@ -31,6 +31,8 @@ import com.cg.cars.models.Card;
 import com.cg.cars.models.Customer;
 import com.cg.cars.models.Payment;
 import com.cg.cars.repositories.IAppointmentRepository;
+import com.cg.cars.repositories.ICustomerRepository;
+import com.cg.cars.repositories.IPaymentRepository;
 import com.cg.cars.services.AppointmentService;
 
 /**
@@ -53,6 +55,10 @@ class AppointmentServiceTest  {
 	
 	@MockBean
 	IAppointmentRepository appointmentRepository;
+	@MockBean
+	ICustomerRepository customerRepository;
+	@MockBean
+	IPaymentRepository paymentRepository;
 	
 	Appointment appointment;
 	Payment payment;
@@ -111,13 +117,14 @@ class AppointmentServiceTest  {
 	
 	
 	
-	  @Test 
-	  void addAppointmentTest() {
-		  
-      when(appointmentRepository.save(appointment)).thenReturn(appointment);
-	  assertEquals(appointment, appointmentService.addAppointment(appointment));
-	  verify(appointmentRepository,times(1)).save(appointment); }
-	 
+	@Test
+	void addAppointmentTest() {
+		when(appointmentRepository.save(appointment)).thenReturn(appointment);
+		when(customerRepository.findById(customer.getUserId())).thenReturn(Optional.of(customer));
+		when(paymentRepository.findById(payment.getId())).thenReturn(Optional.of(payment));
+		assertEquals(appointment, appointmentService.addAppointment(appointment));
+		verify(appointmentRepository, times(1)).save(appointment);
+	}
 	
 	@Test
 	void getAllAppointmentTest() {
@@ -167,9 +174,19 @@ class AppointmentServiceTest  {
 	
 	@Test
 	void updateAppointmentTest() {
+		when(appointmentRepository.findById(1L)).thenReturn(Optional.of(appointment));
+		when(customerRepository.findById(customer.getUserId())).thenReturn(Optional.of(customer));
+		when(paymentRepository.findById(payment.getId())).thenReturn(Optional.of(payment));
 		when(appointmentRepository.save(appointment)).thenReturn(appointment);
-		assertEquals(appointment, appointmentService.updateAppointment(1L,appointment));
-		verify(appointmentRepository,times(1)).save(appointment);
+		assertEquals(appointment, appointmentService.updateAppointment(1, "DLK Area", "Inspect", LocalDate.of(2021, 04, 21), LocalTime.of(20, 12), customer.getUserId(), payment.getId()));
+		verify(appointmentRepository,times(1)).findById(1L);
+	}
+	
+	@Test
+	void updateAppointmentNegativeTest() {
+		when(appointmentRepository.findById(1L)).thenThrow(AppointmentNotFoundException.class);
+		assertThrows(AppointmentNotFoundException.class, () -> appointmentService.updateAppointment(1, "string", "string", LocalDate.of(2023, 04, 12), LocalTime.of(12, 10, 11), customer.getUserId(), payment.getId()));
+		verify(appointmentRepository,times(1)).findById(1L);
 	}
 	
 	@Test
