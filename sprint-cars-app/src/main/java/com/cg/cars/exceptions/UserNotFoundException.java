@@ -5,7 +5,7 @@ import org.slf4j.LoggerFactory;
 
 public class UserNotFoundException extends RuntimeException {
 
-	Logger log = LoggerFactory.getLogger(GlobalExceptionHandler.class);
+	Logger log = LoggerFactory.getLogger(UserNotFoundException.class);
 
 	public UserNotFoundException(String message) {
 		super(message);

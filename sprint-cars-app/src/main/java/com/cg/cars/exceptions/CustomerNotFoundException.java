@@ -6,7 +6,7 @@ import org.slf4j.LoggerFactory;
 public class CustomerNotFoundException extends RuntimeException {
 
 	private static final long serialVersionUID = 7267569579560284910L;
-	Logger log = LoggerFactory.getLogger(GlobalExceptionHandler.class);
+	Logger log = LoggerFactory.getLogger(CustomerNotFoundException.class);
 
 	public CustomerNotFoundException(String message) {
 		super(message);

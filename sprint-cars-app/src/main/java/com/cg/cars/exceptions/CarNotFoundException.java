@@ -6,7 +6,7 @@ import org.slf4j.LoggerFactory;
 public class CarNotFoundException extends RuntimeException {
 
 	private static final long serialVersionUID = -8283163009295357365L;
-	Logger log = LoggerFactory.getLogger(GlobalExceptionHandler.class);
+	Logger log = LoggerFactory.getLogger(CarNotFoundException.class);
 
 	public CarNotFoundException(String msg) {
 		super(msg);

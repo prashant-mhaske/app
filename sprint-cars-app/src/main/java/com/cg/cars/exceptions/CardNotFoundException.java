@@ -6,7 +6,7 @@ import org.slf4j.LoggerFactory;
 public class CardNotFoundException extends RuntimeException {
 
 	private static final long serialVersionUID = 4213290295939422558L;
-	Logger log = LoggerFactory.getLogger(GlobalExceptionHandler.class);
+	Logger log = LoggerFactory.getLogger(CardNotFoundException.class);
 
 	public CardNotFoundException(String msg) {
 		super(msg);
