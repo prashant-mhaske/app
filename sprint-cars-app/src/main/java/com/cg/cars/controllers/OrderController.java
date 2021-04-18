@@ -36,9 +36,9 @@ public class OrderController {
 		return new ResponseEntity<>(orderService.removeOrder(id), HttpStatus.OK);
 	}
 	
-	@PutMapping("/update")
-	public ResponseEntity<Order> updateOrder(@RequestBody Order order){	//NOSONAR
-		return new ResponseEntity<>(orderService.updateOrder(0, order), HttpStatus.OK);
+	@PutMapping("/update/{id}/{billingDate}/{userId}")
+	public ResponseEntity<Order> updateOrder(@PathVariable("id") long id, @RequestParam("billingDate") @DateTimeFormat(pattern="yyyy-MM-dd") LocalDate billingDate, @PathVariable("userId") long custId, @RequestBody List<Long> carId){	//NOSONAR
+		return new ResponseEntity<>(orderService.updateOrder(id, billingDate, custId, carId), HttpStatus.OK);
 	}
 	
 	@GetMapping("/getOrderDetails/{id}")
