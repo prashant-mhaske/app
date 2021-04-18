@@ -24,6 +24,10 @@ public class UserService implements IUserService {
 	@Autowired
 	IUserRepository userRepository;
 
+	/**
+	 * Sign in to the application
+	 */
+	
 	@Override
 	public User signIn(long userId, String password) {
 
@@ -57,6 +61,10 @@ public class UserService implements IUserService {
 
 	}
 
+	/**
+	 * Sign Out from the Application
+	 */
+	
 	@Override
 	public User signOut(User user) {
 
@@ -68,6 +76,10 @@ public class UserService implements IUserService {
 		return null;
 	}
 
+	/**
+	 * Change Password in the customer account
+	 */
+	
 	@Override
 	public User changePassword(long id, User user) {
 

@@ -115,8 +115,6 @@ class OrderServiceTest {
 		c2.setRegistrationState("Maharashtra");
 		List<Car> car = Arrays.asList(c1, c2);
 		order.setCar(car);
-		
-	
 	}
 
 	@Test
@@ -149,9 +147,10 @@ class OrderServiceTest {
 	@Test
 	@DisplayName("Test to check whether Order is updated")
 	void updateOrderTest() {
+		List<Long> carId = Arrays.asList(1L, 2L);
 		when(orderRepository.save(order)).thenReturn(order);
-		assertEquals(order, orderService.updateOrder(11L, order));
-		verify(orderRepository, times(1)).save(order);
+		assertThrows(OrderNotFoundException.class, () -> orderService.updateOrder(order.getId(), order.getBillingDate(), customer.getUserId(), carId));
+		verify(orderRepository, times(1)).findById(order.getId());
 	}
 	
 	@Test
