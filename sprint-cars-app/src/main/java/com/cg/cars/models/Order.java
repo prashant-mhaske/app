@@ -10,7 +10,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -22,9 +21,6 @@ public class Order {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	
-//	@Column
-//	private double amount;
-	
 	@Column
 	private LocalDate billingDate;
 	
@@ -34,17 +30,8 @@ public class Order {
 	@ManyToMany(mappedBy = "order")
 	private List<Car> car=new ArrayList<>();
 	
-	public Order() {
-		
+	public Order() {	
 	}
-
-//	public Order(long id, double amount, LocalDate billingDate, Customer customer) {
-//		super();
-//		this.id = id;
-//		this.amount = amount;
-//		this.billingDate = billingDate;
-//		this.customer = customer;
-//	}
 	
 	public Order(long id, LocalDate billingDate, Customer customer, List<Car> car) {
 		super();
@@ -61,14 +48,6 @@ public class Order {
 	public void setId(long id) {
 		this.id = id;
 	}
-
-//	public double getAmount() {
-//		return amount;
-//	}
-//
-//	public void setAmount(double amount) {
-//		this.amount = amount;
-//	}
 
 	public LocalDate getBillingDate() {
 		return billingDate;
@@ -98,5 +77,4 @@ public class Order {
 	public String toString() {
 		return "Order [id=" + id + ", billingDate=" + billingDate + ", customer=" + customer + ", car=" + car + "]";
 	}
-
 }

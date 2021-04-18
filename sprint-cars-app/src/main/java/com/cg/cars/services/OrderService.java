@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jca.cci.CannotCreateRecordException;
 import org.springframework.stereotype.Service;
 
 import com.cg.cars.exceptions.OrderNotFoundException;
@@ -44,7 +43,6 @@ public class OrderService implements IOrderService {
 	@Autowired
 	ICarRepository carRepository;
 	
-	//@Autowired
 	List<Car> car;
 	
 	double total;
@@ -52,6 +50,10 @@ public class OrderService implements IOrderService {
 	double billingAmount;
 	String s;
 	Order order;
+	
+	/*
+	 * Add order details in database.
+	 */
 	@Override
 	public Order addOrder(long id, LocalDate billingDate, long custId, List<Long> carId) {
 		Customer customer = customerService.getCustomer(custId);
@@ -75,6 +77,9 @@ public class OrderService implements IOrderService {
 		return orderRepository.save(order);
 	}
 	
+	/*
+	 * Remove order details from database using order Id.
+	 */
 	@Override
 	public Order removeOrder(long id) {
 		Order order = getOrderDetails(id);
@@ -82,22 +87,33 @@ public class OrderService implements IOrderService {
 		return order;
 	}
 	
+	/*
+	 * Update order details in database using order Id.
+	 */
 	@Override
 	public Order updateOrder(long id, Order order) {
-		orderRepository.save(order);
-		return order;
+		return orderRepository.save(order);
 	}
 
+	/*
+	 * Retrieving order details from database using order Id.
+	 */
 	@Override
 	public Order getOrderDetails(long id) throws OrderNotFoundException {
 		return orderRepository.findById(id).orElseThrow(()->new OrderNotFoundException("No such Order found"));
 	}
 	
+	/*
+	 * Retrieving order details from database using Billing Date.
+	 */
 	@Override
 	public List<Order> getOrdersByBillDate(LocalDate billingDate) {
 		return orderRepository.findByDate(billingDate);
 	}
 
+	/*
+	 * Retrieving all order details from database.
+	 */
 	@Override
 	public List<Order> getAllOrders() {
 		List<Order> order = new ArrayList<>();
@@ -105,17 +121,17 @@ public class OrderService implements IOrderService {
 		return order;
 	}
 	
+	/*
+	 * Calculating Order Bill using order Id.
+	 */
 	@Override
 	public String getBill(long id) {
-
 		Order order = orderRepository.findById(id).orElseThrow(()->new OrderNotFoundException("No such Order found"));
 		car = order.getCar();
-		
 		car.forEach(c -> total += c.getPrice());
 		gst = total * 0.18;
 		billingAmount = total + gst; 
-		
-		s = "\nOrder Id: " + id + "\nBilling Date: " + order.getBillingDate() + "\n" + order.getCustomer().toString() + "\n";
+		s = "Order Id: " + id + "\nBilling Date: " + order.getBillingDate() + "\n" + order.getCustomer().toString() + "\n";
 		car.forEach(c -> s += c.toString() + "\n");
 		s += "\nTotal: " + total + "\nGST: " + gst + "\nBilling Amount: " + billingAmount;
 		total=0;
