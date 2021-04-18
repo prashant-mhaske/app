@@ -7,6 +7,7 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -21,20 +22,13 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 
 import com.cg.cars.exceptions.AdminNotFoundException;
+import com.cg.cars.exceptions.CustomerNotFoundException;
+import com.cg.cars.models.Address;
 import com.cg.cars.models.Admin;
+import com.cg.cars.models.Customer;
 import com.cg.cars.repositories.IAdminRepository;
 import com.cg.cars.services.IAdminService;
-
-/**
-*
-* @author TEAM 2
-* MEMBERS:	Abhishek Sen
-* 			Prashant Mhaske
-*			Rishabh Gupta
-* 			Akshay Talekar
-*			Nikhil Nichit
-*
-*/
+import com.cg.cars.services.ICustomerService;
 
 @SpringBootTest
 class AdminServiceTest {
@@ -49,9 +43,7 @@ class AdminServiceTest {
 	
 	@BeforeEach
 	void init() {
-		admin=new Admin();
-		admin.setUserId(567L);
-		admin.setPassword("passw");
+		admin = new Admin(567, "passw");
 	}
 	
 	@Test
@@ -60,6 +52,8 @@ class AdminServiceTest {
 		assertEquals(admin, adminService.addAdmin(admin));
 		verify(adminRepository,times(1)).save(admin);
 	}
+	
+
 	
 	@Test
 	void removeAdminbyIdTest() {
@@ -71,9 +65,23 @@ class AdminServiceTest {
 	}
 	
 	@Test
+	void removeCustomerByIdNegativeTest() {
+		when(adminRepository.findById(2L)).thenThrow(AdminNotFoundException.class);
+		assertThrows(AdminNotFoundException.class, () -> adminService.removeAdmin(2L));
+		verify(adminRepository,times(0)).deleteById(2L);
+		verify(adminRepository,times(1)).findById(2L);
+	}
+	@Test
 	void updateAdminTest() {
 		when(adminRepository.save(admin)).thenReturn(admin);
 		assertEquals(admin, adminService.updateAdmin(1L,admin));
+		verify(adminRepository,times(1)).save(admin);
+	}
+	
+	@Test
+	void updateAdminNegativeTest() {
+		when(adminRepository.save(admin)).thenThrow(AdminNotFoundException.class);
+		assertThrows(AdminNotFoundException.class, () -> adminService.updateAdmin(4L, admin));
 		verify(adminRepository,times(1)).save(admin);
 	}
 	

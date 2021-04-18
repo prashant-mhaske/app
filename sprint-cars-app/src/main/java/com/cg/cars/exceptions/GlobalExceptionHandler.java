@@ -21,31 +21,31 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 	
 	@ExceptionHandler(CustomerNotFoundException.class)
 	public ResponseEntity<Object> handleCustomerNotFound(CustomerNotFoundException ex){
-		log.info("Customer Not Found");
+		log.info("Handled Customer Not Found");
 		return new ResponseEntity<>(ex.getMessage(),HttpStatus.NOT_FOUND);
 	}
 	
 	@ExceptionHandler(UserNotFoundException.class)
 	public ResponseEntity<Object> handleUserNotFound(UserNotFoundException ex){
-		log.info("User Not Found");
+		log.info("Handled User Not Found");
 		return new ResponseEntity<>(ex.getMessage(),HttpStatus.NOT_FOUND);
 	}
 	
 	@ExceptionHandler(InvalidPasswordException.class)
 	public ResponseEntity<Object> handleInvalidPasswordException(InvalidPasswordException ex){
-		log.info("Invalid Password Entered");
+		log.info("Handled Invalid Password Entered");
 		return new ResponseEntity<>(ex.getMessage(),HttpStatus.UNAUTHORIZED);
 	}
 	
 	@ExceptionHandler(PaymentNotFoundException.class)
 	public ResponseEntity<Object> handlePaymentNotFound(PaymentNotFoundException ex){
-		log.info("Payment Not Found");
+		log.info("Handled Payment Not Found");
 		return new ResponseEntity<>(ex.getMessage(),HttpStatus.NOT_FOUND);
 	}
 	
 	@ExceptionHandler(CarNotFoundException.class)
 	public ResponseEntity<Object> handlePaymentNotFound(CarNotFoundException ex){
-		log.info("Car Not Found");
+		log.info("Handled Car Not Found");
 		return new ResponseEntity<>(ex.getMessage(),HttpStatus.NOT_FOUND);
 	}
 	
