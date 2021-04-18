@@ -48,10 +48,12 @@ class CarServiceTest {
 
 	Car car5;
 	Car car;
+	List<Car> c;
 
 	@BeforeEach
 	void init() {
-
+		
+		c = new ArrayList<>();
 		car5 = new Car(103, "Ford", "Eco", "Orange", "Vxi", 18.5, LocalDate.of(2020, 01, 25), "Maharashtra");
 
 		car = new Car();
@@ -126,7 +128,7 @@ class CarServiceTest {
 	void getCarsByLocationNegativeTest() {
 		String location = "Maharashtra";
 
-		when(carRepository.findByRegistrationState(location)).thenThrow(CarNotFoundException.class);
+		when(carRepository.findByRegistrationState(location)).thenReturn(c);
 		assertThrows(CarNotFoundException.class, () -> carService.getCarsByLocation(location));
 		verify(carRepository, times(1)).findByRegistrationState(location);
 	}
@@ -150,7 +152,7 @@ class CarServiceTest {
 	@Test
 	@DisplayName("Test to check whether cars are not available for given year")
 	void getCarsByYearNegativeTest() {
-		when(carRepository.findByYear("2020")).thenThrow(CarNotFoundException.class);
+		when(carRepository.findByYear("2020")).thenReturn(c);
 		assertThrows(CarNotFoundException.class, () -> carService.getCarsByYear("2020"));
 		verify(carRepository, times(1)).findByYear("2020");
 
@@ -174,7 +176,7 @@ class CarServiceTest {
 	@Test
 	@DisplayName("Test to check whether car are not available by brand")
 	void getCarsByBrandNegativeTest() {
-		when(carRepository.findByBrand("Tata")).thenThrow(CarNotFoundException.class);
+		when(carRepository.findByBrand("Tata")).thenReturn(c);
 		assertThrows(CarNotFoundException.class, () -> carService.getCarsByBrand("Tata"));
 		verify(carRepository, times(1)).findByBrand("Tata");
 
@@ -200,7 +202,7 @@ class CarServiceTest {
 	@DisplayName("Test to check whether car models are not available")
 	void getCarsByModelNegativeTest() {
 
-		when(carRepository.findByModel("Eco")).thenThrow(CarNotFoundException.class);
+		when(carRepository.findByModel("Eco")).thenReturn(c);
 		assertThrows(CarNotFoundException.class, () -> carService.getCarsByModel("Eco"));
 		verify(carRepository, times(1)).findByModel("Eco");
 
@@ -225,7 +227,7 @@ class CarServiceTest {
 	@Test
 	@DisplayName("Test to check whether cars are not available for given price")
 	void getCarsByPriceNegativeTest() {
-		when(carRepository.findByPrice(18.5)).thenThrow(CarNotFoundException.class);
+		when(carRepository.findByPrice(18.5)).thenReturn(c);
 		assertThrows(CarNotFoundException.class, () -> carService.getCarsByPrice(18.5));
 		verify(carRepository, times(1)).findByPrice(18.5);
 
@@ -251,7 +253,7 @@ class CarServiceTest {
 	@Test
 	@DisplayName("Test to check whether cars are not available by price range")
 	void getCarsByPriceRangeNegativeTest() {
-		when(carRepository.findByPriceRange(10.5, 18)).thenThrow(CarNotFoundException.class);
+		when(carRepository.findByPriceRange(10.5, 18)).thenReturn(c);
 		assertThrows(CarNotFoundException.class, () -> carService.getCarsByPriceRange(10.5, 18));
 		verify(carRepository, times(1)).findByPriceRange(10.5, 18);
 
@@ -278,7 +280,7 @@ class CarServiceTest {
 	@DisplayName("Test to check whether car models with color are not available")
 	void getCarsByModelColorNegativeTest() {
 
-		when(carRepository.findByModelColor("Eco", "Red")).thenThrow(CarNotFoundException.class);
+		when(carRepository.findByModelColor("Eco", "Red")).thenReturn(c);
 		assertThrows(CarNotFoundException.class, () -> carService.getCarsByModelColor("Eco", "Red"));
 		verify(carRepository, times(1)).findByModelColor("Eco", "Red");
 
