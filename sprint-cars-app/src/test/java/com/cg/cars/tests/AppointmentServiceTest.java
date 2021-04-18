@@ -167,9 +167,9 @@ class AppointmentServiceTest  {
 	
 	@Test
 	void updateAppointmentTest() {
-		when(appointmentRepository.save(appointment)).thenReturn(appointment);
-		assertEquals(appointment, appointmentService.updateAppointment(1L,appointment));
-		verify(appointmentRepository,times(1)).save(appointment);
+		when(appointmentRepository.findById(1L)).thenThrow(AppointmentNotFoundException.class);
+		assertThrows(AppointmentNotFoundException.class, () -> appointmentService.updateAppointment(1, "string", "string", LocalDate.of(2023, 04, 12), LocalTime.of(12, 10, 11), customer.getUserId(), payment.getId()));
+		verify(appointmentRepository,times(1)).findById(1L);
 	}
 	
 	@Test

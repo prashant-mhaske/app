@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -58,11 +57,13 @@ public class AppointmentController {
 		return new ResponseEntity<>(appointService.removeAppointment(id), HttpStatus.OK);
 	}
 	
-	@PutMapping("/update/{id}")
-	public ResponseEntity<Appointment> update(@PathVariable("id") long id, @RequestBody Appointment appointment)	//NOSONAR
+	@PutMapping("/update/{Id}/{location}/{inspectionType}/{preferredDate}/{preferredTime}/{custId}/{payId}")
+	public ResponseEntity<Appointment> update(@PathVariable ("Id") long id, @PathVariable ("location") String location,
+			@PathVariable ("inspectionType") String inspectionType, @RequestParam ("preferredDate") @DateTimeFormat(pattern="yyyy-MM-dd") LocalDate preferredDate,
+			@RequestParam ("LocalTime") @DateTimeFormat(pattern="HH:mm:ss") LocalTime preferredTime, @PathVariable ("custId") long custId, @PathVariable ("payId") long payId)	//NOSONAR
 	{
 		
-		return new ResponseEntity<>(appointService.updateAppointment(id, appointment), HttpStatus.OK);
+		return new ResponseEntity<>(appointService.updateAppointment(id, location, inspectionType, preferredDate, preferredTime, custId, payId), HttpStatus.OK);
 	}
 	
 	@GetMapping("/GetOpenAppointments")

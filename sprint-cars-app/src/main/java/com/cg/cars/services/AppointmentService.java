@@ -8,6 +8,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.cg.cars.exceptions.AppointmentNotFoundException;
 import com.cg.cars.models.Appointment;
 import com.cg.cars.models.Customer;
 import com.cg.cars.models.Payment;
@@ -71,7 +72,20 @@ public class AppointmentService implements IAppointmentService {
 	}
 
 	@Override
-	public Appointment updateAppointment(long id, Appointment appointment) {
+	public Appointment updateAppointment(long id, String location, String inspectionType, LocalDate preferredDate,
+			LocalTime preferredTime, long custId, long payId) {
+		
+		Appointment appointment=appointmentRepository.findById(id)
+				.orElseThrow(() ->new AppointmentNotFoundException("Appointment Details Not Avialable"));
+		
+		Customer cust = customerService.getCustomer(custId);
+		Payment pay = paymentService.getPaymentDetails(payId);
+		appointment.setLocation(location);
+		appointment.setInspectionType(inspectionType);
+		appointment.setPreferredDate(preferredDate);
+		appointment.setPreferredTime(preferredTime);
+		appointment.setCustomer(cust);
+		appointment.setPayment(pay);
 		return appointmentRepository.save(appointment);
 		 
 		
