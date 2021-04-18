@@ -10,7 +10,11 @@ public class CardNotFoundException extends RuntimeException {
 
 	public CardNotFoundException(String msg) {
 		super(msg);
-		log.info("Card not Found !!");
+    log.info("Card not Found !!");
 	}
+
+
+	}
+	
 
 }

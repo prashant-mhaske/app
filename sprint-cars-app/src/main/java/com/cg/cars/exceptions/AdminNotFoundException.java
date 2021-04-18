@@ -7,9 +7,12 @@ public class AdminNotFoundException extends RuntimeException {
 	Logger log = LoggerFactory.getLogger(AdminNotFoundException.class);
 	private static final long serialVersionUID = 4372259374757753073L;
 
+
 	public AdminNotFoundException(String message) {
 		super(message);
 		log.info("Admin not Found !!");
 	}
+
+
 
 }
