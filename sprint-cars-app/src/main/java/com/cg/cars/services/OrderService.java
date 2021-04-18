@@ -7,6 +7,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.cg.cars.exceptions.CustomerNotFoundException;
 import com.cg.cars.exceptions.OrderNotFoundException;
 import com.cg.cars.models.Car;
 import com.cg.cars.models.Customer;
@@ -20,10 +21,10 @@ import com.cg.cars.repositories.IOrderRepository;
 *
 * @author TEAM 2
 * MEMBERS:	Abhishek Sen
-* 			    Prashant Mhaske
-*			      Rishabh Gupta
-* 			    Akshay Talekar
-*			      Nikhil Nichit
+* 			Prashant Mhaske
+*			Rishabh Gupta
+* 			Akshay Talekar
+*			Nikhil Nichit
 *
 */
 
@@ -65,6 +66,7 @@ public class OrderService implements IOrderService {
 		order.setId(id);
 		order.setBillingDate(billingDate);
 		order.setCustomer(customer);
+		order.setStatus("Successful");
 		order=orderRepository.save(order);
 		List<Car> cars=new ArrayList<>();
 		carId.forEach(cId->{
@@ -87,8 +89,8 @@ public class OrderService implements IOrderService {
 	@Override
 	public Order removeOrder(long id) {
 		Order order = getOrderDetails(id);
-		orderRepository.deleteById(id);
-		return order;
+		order.setStatus("Completed");
+		return orderRepository.save(order);
 	}
 	
 	/*
@@ -98,8 +100,9 @@ public class OrderService implements IOrderService {
 	public Order updateOrder(long id, LocalDate billingDate, long custId, List<Long> carId) {
 		order = orderRepository.findById(id).orElseThrow(() -> new OrderNotFoundException("No such order Found"));
 		order.setBillingDate(billingDate);
-		customer = customerRepository.findById(custId).get();
+		customer = customerRepository.findById(custId).orElseThrow(() ->new CustomerNotFoundException("Customer Not Found"));
 		order.setCustomer(customer);
+		order.setStatus("Successful");
 		List<Car> car = new ArrayList<>();
 		carId.forEach(cId->{
 			Car c=carService.getCarById(cId);

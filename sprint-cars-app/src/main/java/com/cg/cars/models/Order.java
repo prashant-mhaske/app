@@ -24,6 +24,9 @@ public class Order {
 	@Column
 	private LocalDate billingDate;
 	
+	@Column
+	private String status;
+	
 	@OneToOne
 	private Customer customer;
 	
@@ -71,6 +74,14 @@ public class Order {
 
 	public void setCar(List<Car> car) {
 		this.car = car;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
 	}
 
 	@Override
