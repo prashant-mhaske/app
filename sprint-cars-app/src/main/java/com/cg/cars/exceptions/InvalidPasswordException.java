@@ -7,9 +7,4 @@ public class InvalidPasswordException extends RuntimeException{
 		super(msg);
 	}
 	
-	@Override
-	public String getMessage() {
-		return super.getMessage();
-	}
-
 }

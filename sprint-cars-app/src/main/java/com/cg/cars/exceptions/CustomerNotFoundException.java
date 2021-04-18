@@ -9,10 +9,4 @@ public class CustomerNotFoundException extends RuntimeException {
 		super(message);
 	}
 	
-	@Override
-	public String getMessage()
-	{
-		return super.getMessage();
-	}
-
 }
