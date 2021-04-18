@@ -129,10 +129,9 @@ class OrderServiceTest {
 	@DisplayName("Test to check whether Order is deleted")
 	void removeOrderTest() {
 		when(orderRepository.findById(11L)).thenReturn(Optional.of(order));
-		when(orderRepository.existsById(11L)).thenReturn(false);
+		when(orderRepository.save(order)).thenReturn(order);
 		orderService.removeOrder(11L);
-		verify(orderRepository, times(1)).deleteById(11L);
-		assertFalse(orderRepository.existsById(11L));
+		verify(orderRepository, times(1)).save(order);
 	}
 	
 	@Test
