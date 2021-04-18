@@ -39,7 +39,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 	
 	@ExceptionHandler(PaymentNotFoundException.class)
 	public ResponseEntity<Object> handlePaymentNotFound(PaymentNotFoundException ex){
-		log.info(" Handled Payment Not Found");
+		log.info("Handled Payment Not Found");
 		return new ResponseEntity<>(ex.getMessage(),HttpStatus.NOT_FOUND);
 	}
 	
