@@ -12,6 +12,7 @@ import com.cg.cars.models.Car;
 import com.cg.cars.models.Customer;
 import com.cg.cars.models.Order;
 import com.cg.cars.repositories.ICarRepository;
+import com.cg.cars.repositories.ICustomerRepository;
 import com.cg.cars.repositories.IOrderRepository;
 
 
@@ -35,6 +36,9 @@ public class OrderService implements IOrderService {
 	IOrderRepository orderRepository;
 	
 	@Autowired
+	ICustomerRepository customerRepository; 
+	
+	@Autowired
 	CustomerService customerService;
 	
 	@Autowired
@@ -42,7 +46,7 @@ public class OrderService implements IOrderService {
 	
 	@Autowired
 	ICarRepository carRepository;
-	
+	Customer customer;
 	List<Car> car;
 	
 	double total;
@@ -91,7 +95,22 @@ public class OrderService implements IOrderService {
 	 * Update order details in database using order Id.
 	 */
 	@Override
-	public Order updateOrder(long id, Order order) {
+	public Order updateOrder(long id, LocalDate billingDate, long custId, List<Long> carId) {
+		order = orderRepository.findById(id).orElseThrow(() -> new OrderNotFoundException("No such order Found"));
+		order.setBillingDate(billingDate);
+		customer = customerRepository.findById(custId).get();
+		order.setCustomer(customer);
+		List<Car> car = new ArrayList<>();
+		carId.forEach(cId->{
+			Car c=carService.getCarById(cId);
+			if(order.getCar().contains(c)) {}
+			else {
+			car.add(c);
+			c.getOrder().add(order);
+			carRepository.save(c);
+			}
+		});
+		order.setCar(car);
 		return orderRepository.save(order);
 	}
 
