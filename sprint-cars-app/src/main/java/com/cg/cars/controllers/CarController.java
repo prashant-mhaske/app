@@ -17,6 +17,17 @@ import org.springframework.web.bind.annotation.RestController;
 import com.cg.cars.models.Car;
 import com.cg.cars.services.ICarServiceImpl;
 
+/**
+*
+* @author TEAM 2 
+* MEMBERS: Abhishek Sen 
+* 			Prashant Mhaske
+* 			Rishabh Gupta 
+* 			Akshay Talekar
+*          Nikhil Nichit
+*
+*/
+
 @RestController
 @RequestMapping("/Cars")
 public class CarController {
