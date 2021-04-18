@@ -31,5 +31,4 @@ public interface IOrderRepository extends CrudRepository<Order, Long>{
 //	public List<Order> getAllOrders(); 
 	@Query("Select o from Order o where billing_date = :billDate")
 	public List<Order> findByDate(@Param(value = "billDate") LocalDate billingDate);
-
 }

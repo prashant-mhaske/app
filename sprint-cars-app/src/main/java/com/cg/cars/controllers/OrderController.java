@@ -33,20 +33,17 @@ public class OrderController {
 	
 	@DeleteMapping("/remove/{id}")
 	public ResponseEntity<Order> removeOrder(@PathVariable("id") long id) {
-		Order o = orderService.removeOrder(id);
-		return new ResponseEntity<>(o, HttpStatus.OK);
+		return new ResponseEntity<>(orderService.removeOrder(id), HttpStatus.OK);
 	}
 	
-	@PutMapping("/update/{id}")
-	public ResponseEntity<Order> updateOrder(@PathVariable("id") long id, @RequestBody Order order){	//NOSONAR
-		Order o = orderService.updateOrder(id, order);
-		return new ResponseEntity<>(o, HttpStatus.OK);
+	@PutMapping("/update")
+	public ResponseEntity<Order> updateOrder(@RequestBody Order order){	//NOSONAR
+		return new ResponseEntity<>(orderService.updateOrder(0, order), HttpStatus.OK);
 	}
 	
 	@GetMapping("/getOrderDetails/{id}")
 	public ResponseEntity<Order> getOrderDetails(@PathVariable("id") long id) {
-		Order o = orderService.getOrderDetails(id);
-		return new ResponseEntity<>(o, HttpStatus.OK);
+		return new ResponseEntity<>(orderService.getOrderDetails(id), HttpStatus.OK);
 	}
 	
 	@GetMapping("/GetCars/billDate/{billingDate}")
