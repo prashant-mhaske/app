@@ -27,11 +27,19 @@ public class CustomerService implements ICustomerService {
 	@Autowired
 	ICustomerRepository customerRepository;
 
+	/**
+	 * Add customer to the database
+	 */
+	
 	@Override
 	public Customer addCustomer(Customer customer) {
 		return customerRepository.save(customer);
 	}
 
+	/**
+	 * Remove customer from the database
+	 */
+	
 	@Override
 	public Customer removeCustomer(long custId) {
 		Customer customer=getCustomer(custId);
@@ -39,15 +47,27 @@ public class CustomerService implements ICustomerService {
 		return customer;
 	}
 
+	/**
+	 * Update customer to the database
+	 */
+	
 	@Override
 	public Customer updateCustomer(long custId, Customer customer) {
 		return customerRepository.save(customer);
 	}
 
+	/**
+	 * Get customer from the database
+	 */
+	
 	@Override
 	public Customer getCustomer(long custId) {
 		return customerRepository.findById(custId).orElseThrow(() -> new CustomerNotFoundException("Customer details not found!"));
 	}
+	
+	/**
+	 * Get all customer details from the database
+	 */
 
 	@Override
 	public List<Customer> getAllCustomers() {
